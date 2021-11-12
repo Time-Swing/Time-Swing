@@ -1,27 +1,48 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import { DatePicker } from 'rsuite';
+
 
 class PostAgenda extends React.Component {
   state = {
     error: false,
     success: false,
-    content: '',
-  }
+    content:{
+        title:'',
+        timeStart:'',
+        timeEnd:'',
+        content:'',
+        address:''
+    }, 
+}
 
-  contentChanged = (event) => {
-    this.setState({
-      content: event.target.value
-    });
-  }
 
-  savePost = (event) => {
+  handleChanged = (event) =>{
+    const {name, value} = event.target
+    console.log(name,value)
+    // console.log("name: "+name+ "...value:"+value)
+    this.setState(preData=>{
+      return {
+          ...preData,
+          content:{
+              ...preData.content,
+              [name]:value
+          }
+      }
+      
+  })
+}
+
+
+  saveAgenda = (event) => {
+    console.log(JSON.stringify(this.state.content))
     fetch("/api/agenda/", {
       method: 'POST',
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({content: this.state.content}),
+      body: JSON.stringify(this.state.content),
     })
       .then(res => {
         if(res.ok) {
@@ -55,17 +76,60 @@ class PostAgenda extends React.Component {
     }
 
     return (
-      <div className="col-10 col-md-8 col-lg-7">
+      <div>
         { errorMessage }
-        <div className="input-group">
+        <div>
           <input 
             type="text" 
-            placeholder="Add your words of wisdom here..." 
-            value={this.state.content}
-            className="form-control mr-3 rounded"
-            onChange={this.contentChanged}
+            placeholder="Type the title" 
+            name="title"
+            value={this.state.content.title}
+            onChange={this.handleChanged}
           />
-          <button className="btn btn-primary" onClick={this.savePost}>Save Post</button>
+        </div>
+        <br/>
+        <div>
+          <input 
+            type="text" 
+            placeholder="Address" 
+            name="address"
+            value={this.state.content.address}
+            onChange={this.handleChanged}
+          />
+          <br/>
+        </div>
+        <br/>
+        <div>
+          <input 
+              type="datetime-local" 
+              name="timeStart"
+              value={this.state.content.timeStart}
+              onChange={this.handleChanged}
+            />
+        </div>
+        <br/>
+        <div>
+        <input 
+              type="datetime-local" 
+              name="timeEnd"
+              value={this.state.content.timeEnd}
+              onChange={this.handleChanged}
+            />
+        </div>
+        <br/>
+        <div>
+          <input 
+            type="text" 
+            name="content"
+            placeholder="Content" 
+            value={this.state.content.content}
+            onChange={this.handleChanged}
+          />
+          <br/>
+        </div>
+        <br/>
+        <div>
+          <button className="btn btn-primary" onClick={this.saveAgenda}>Save Post</button>
         </div>
       </div>
     );
