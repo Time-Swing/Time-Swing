@@ -34,6 +34,9 @@ router.put("/:id", (req, res) => {
 	const id = req.params.id; // we want the id only of the user request object
 	Agenda.findByPk(id).then((agenda) => {
 		// find by primary key id
+		if (!agenda) {
+			return res.sendStatus(404);
+		}
 		const updatedAgenda = req.body; // object parmas front-end pass in, getting whatever user passes from the front end
 		agenda.set(updatedAgenda); // changed instance data, still not save into DB
 		agenda
@@ -72,5 +75,3 @@ router.post("/", (req, res) => {
 });
 
 module.exports = router;
-
-//git push main ALexBranch
