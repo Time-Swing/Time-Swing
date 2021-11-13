@@ -6,7 +6,8 @@
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.3"
+    "react-scripts": "4.0.3",
+    "rsuite": "^5.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -29,5 +30,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3939"
+  "proxy": "http://localhost:8080"
 }

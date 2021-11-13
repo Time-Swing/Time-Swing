@@ -2,16 +2,33 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 function AgendaItem(props){
-    return (
+    let isIndetail = props.isIndetail
+    let startTime = props.timeStart && new Date(props.timeStart)
+    let timeEnd = props.timeEnd && new Date(props.timeEnd)
+    let renderContent = null
+    console.log("Time Start:"+startTime)
+    console.log("Time End:"+timeEnd)
+    if(isIndetail){
+        renderContent = 
         <div>
             <Link to={"/agenda/"+props.id}>
-                <p>{props.title}</p>
+            <p>{props.title}</p>
             </Link>
-                <p>{props.timeStart}</p>
-                {props.timeEnd && <p>{props.timeEnd}</p>} 
-                {/* {props.content} && <p>{props.content}</p> */}
-                <p>{props.createdAt}</p>
+            <p>Begin At: {startTime.toString()}</p>
+            {props.content && <p>Content: {props.content}</p>}
+            {props.address && <p>Address: {props.address}</p>}
+            <p>End At:   {timeEnd.toString()}</p>
         </div>
-    )
+    }else{
+        renderContent = 
+        <div>
+            <Link to={"/agenda/"+props.id}>
+            <p>{props.title}</p>
+            </Link>
+            <p>Begin At: {startTime.toLocaleString()}</p>
+            <p>End At:   {timeEnd.toLocaleString()}</p>
+            </div>
+    }
+    return renderContent
 }
 export default AgendaItem
