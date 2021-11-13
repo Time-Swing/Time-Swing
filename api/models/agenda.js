@@ -8,16 +8,16 @@ module.exports = (sequelize, DataTypes) => {
 	Agenda.init(
 		{
 			timeStart: {
-				type: DataTypes.DATE,
+				type: DataTypes.STRING,
 				validate: {
-					len: [8, 250],
+					len: [3, 250],
 					notEmpty: true,
 				},
 			},
 			timeEnd: {
-				type: DataTypes.DATE,
+				type: DataTypes.STRING,
 				validate: {
-					len: [8, 250],
+					len: [3, 250],
 					notEmpty: false,
 				},
 			},
@@ -31,6 +31,7 @@ module.exports = (sequelize, DataTypes) => {
 			content: {
 				type: DataTypes.STRING,
 				validate: {
+					len: [3, 250],
 					notEmpty: false,
 				},
 			},
