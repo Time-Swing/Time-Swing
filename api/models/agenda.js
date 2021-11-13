@@ -15,11 +15,8 @@ module.exports = (sequelize,DataTypes)=>{
         },
         timeEnd:{
             type:DataTypes.STRING,
-            validate:{
-                len:[3,250],
-                notEmpty:false,
-            }
         },
+
         title:{
             type:DataTypes.STRING,
             validate:{
@@ -29,17 +26,10 @@ module.exports = (sequelize,DataTypes)=>{
         },
         content:{
             type:DataTypes.STRING,
-            validate:{
-                len:[3,250],
-                notEmpty:false
-            }
         },
+
         address:{
             type:DataTypes.STRING,
-            validate:{
-                len:[3,250],
-                notEmpty:false
-            }
         }
     },{
         sequelize,
