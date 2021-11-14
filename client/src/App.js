@@ -6,7 +6,10 @@ import {
   Link,
   NavLink
 } from 'react-router-dom';
-
+// import PostsListPage from './pages/PostsListPage';
+// import ShowPostPage from './pages/ShowPostPage';
+import PostFormPage from './pages/PostFormPage';
+import PostAgenda from './pages/agenda/PostAgenda';
 import AboutUsPage from './pages/AboutUsPage';
 import ShowAllAgenda from './pages/agenda/ShowAllAgenda'
 import ShowAgenda from './pages/agenda/ShowAgenda';
@@ -43,7 +46,7 @@ class App extends React.Component {
           <div className="container-fluid text-center">
             <div className="row justify-content-center">
               <Switch>
-                <Route path="/agenda/new" component={NewAgenda} />
+                <Route path="/agenda/new" component={PostAgenda} />
                 <Route path="/agenda/:id" component={ShowAgenda} />
                 <Route path="/about-us" component={AboutUsPage} />
                 <Route path="/" component={ShowAllAgenda} />
