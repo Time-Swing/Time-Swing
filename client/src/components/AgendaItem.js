@@ -6,8 +6,8 @@ function AgendaItem(props){
     let startTime = props.timeStart && new Date(props.timeStart)
     let timeEnd = props.timeEnd && new Date(props.timeEnd)
     let renderContent = null
-    console.log("Time Start:"+startTime)
-    console.log("Time End:"+timeEnd)
+    // console.log("Time Start:"+startTime)
+    // console.log("Time End:"+timeEnd)
     if(isIndetail){
         renderContent = 
         <div>

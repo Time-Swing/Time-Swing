@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { DatePicker } from 'rsuite';
+// import { DatePicker } from 'rsuite';
 
 
 class PostAgenda extends React.Component {
@@ -19,7 +19,7 @@ class PostAgenda extends React.Component {
 
   handleChanged = (event) =>{
     const {name, value} = event.target
-    console.log(name,value)
+    // console.log(name,value)
     // console.log("name: "+name+ "...value:"+value)
     this.setState(preData=>{
       return {
@@ -35,7 +35,7 @@ class PostAgenda extends React.Component {
 
 
   saveAgenda = (event) => {
-    console.log(JSON.stringify(this.state.content))
+    // console.log(JSON.stringify(this.state.content))
     fetch("/api/agenda/", {
       method: 'POST',
       credentials: 'include',

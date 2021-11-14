@@ -1,8 +1,8 @@
 import React from 'react'
 import AgendaItem from '../../components/AgendaItem'
 import Loading from '../../components/Loading'
+import DeleteAgenda from './DeleteAgenda'
 
-//Get
 class AgendaListPage extends React.Component{
     state = {
         agendas:[],
@@ -17,7 +17,8 @@ class AgendaListPage extends React.Component{
                 this.setState({
                     isLoading:false,
                     agendas:agendaData.map((agendaItem,index)=>{
-                        return <AgendaItem 
+                        return <div>
+                                <AgendaItem 
                                     key={index}
                                     id={agendaItem.id}
                                     timeStart={agendaItem.timeStart}
@@ -27,6 +28,8 @@ class AgendaListPage extends React.Component{
                                     address={agendaItem.address}
                                     createdAt= {agendaItem.createdAt}
                                 />
+                                <DeleteAgenda key={index} id={agendaItem.id} />
+                                </div>
                     })
                 })
             })

@@ -6,14 +6,11 @@ import {
   Link,
   NavLink
 } from 'react-router-dom';
-// import PostsListPage from './pages/PostsListPage';
-// import ShowPostPage from './pages/ShowPostPage';
-import PostFormPage from './pages/PostFormPage';
+
 import PostAgenda from './pages/agenda/PostAgenda';
 import AboutUsPage from './pages/AboutUsPage';
 import ShowAllAgenda from './pages/agenda/ShowAllAgenda'
 import ShowAgenda from './pages/agenda/ShowAgenda';
-import NewAgenda from './pages/agenda/NewAgenda';
 import './App.css';
 
 
