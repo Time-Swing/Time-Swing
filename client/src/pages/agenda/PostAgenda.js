@@ -1,6 +1,6 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import { DatePicker } from "rsuite";
+// import { DatePicker } from "rsuite";
 
 class PostAgenda extends React.Component {
 	state = {
