@@ -17,7 +17,8 @@ class ShowAgenda extends React.Component{
         fetch(url)
             .then(res=>res.json())
             .then(target=>{
-                console.log(target)
+                target["isIndetail"] = true
+                // console.log(target)
                 this.setState({
                     agendaItem:<AgendaItem {...target} />,
                     isLoading:false

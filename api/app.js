@@ -13,8 +13,8 @@ app.use(express.json());
 const logFormat = process.env.NODE_ENV==='production' ? 'combined' : 'dev';
 app.use(morgan(logFormat));
 
-// this mounts controllers/index.js at the route `/api`
-app.use('/api', require('./controllers'));
+// this mounts controllers/index.js at the route `/api`   
+app.use('/api', require('./controllers'));  
 
 // for production use, we serve the static react build folder
 if(process.env.NODE_ENV==='production') {

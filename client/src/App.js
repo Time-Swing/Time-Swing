@@ -6,23 +6,22 @@ import {
   Link,
   NavLink
 } from 'react-router-dom';
-// import PostsListPage from './pages/PostsListPage';
-// import ShowPostPage from './pages/ShowPostPage';
-import PostFormPage from './pages/PostFormPage';
+
 import AboutUsPage from './pages/AboutUsPage';
 import ShowAllAgenda from './pages/agenda/ShowAllAgenda'
 import ShowAgenda from './pages/agenda/ShowAgenda';
+import NewAgenda from './pages/agenda/NewAgenda';
 import './App.css';
 
 
 function Navigation(props) {
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
-      <Link className="navbar-brand" to="/">Micro Blog</Link>
+      <Link className="navbar-brand" to="/">Time Swing</Link>
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
-          <NavLink className="nav-link" exact to="/posts/new">
-            Create a Micro Post
+          <NavLink className="nav-link" exact to="/agenda/new">
+            What is your next agenda?
           </NavLink>
         </li>
         <li className="nav-item">
@@ -44,7 +43,7 @@ class App extends React.Component {
           <div className="container-fluid text-center">
             <div className="row justify-content-center">
               <Switch>
-                <Route path="/agenda/new" component={PostFormPage} />
+                <Route path="/agenda/new" component={NewAgenda} />
                 <Route path="/agenda/:id" component={ShowAgenda} />
                 <Route path="/about-us" component={AboutUsPage} />
                 <Route path="/" component={ShowAllAgenda} />

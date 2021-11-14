@@ -2,10 +2,10 @@
 
 const fs = require('fs');
 const path = require('path');
-const Sequelize = require('sequelize');
+const Sequelize = require('sequelize'); 
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
+const config = require(__dirname + '/../config/config.json')[env]; 
 const db = {};
 
 let sequelize;
@@ -17,14 +17,14 @@ if (config.use_env_variable) {
 
 fs
   .readdirSync(__dirname)
-  .filter(file => {
+  .filter(file => {//it looking files ***.js but not include index.js
     return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
   })
   .forEach(file => {
     // const model = sequelize.import(path.join(__dirname, file)); // version 5
     const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes); // version 6
-    const modelName = model.name.charAt(0).toUpperCase() + model.name.slice(1);
-    db[modelName] = model;
+    const modelName = model.name.charAt(0).toUpperCase() + model.name.slice(1);// Agenda    
+    db[modelName] = model;  //db = {Agenda:agenda,Post:post.....}  
   });
 
 Object.keys(db).forEach(modelName => {

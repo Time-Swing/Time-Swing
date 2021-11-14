@@ -10,14 +10,14 @@ const { Agenda } = db; //imports the specific specific Agenda module
 //404 - object not found
 
 // GET /api/agenda/       		//get all agendas
-// GET /api/agendas/:id			//get an agenda
-// PUT /api/agendas/:id      		//update an agenda
-// POST /api/agendas/			//add new agendas
-// DELETE  /api/agendas/:id 	  	//delete an agenda
+// GET /api/agenda/:id			//get an agenda
+// PUT /api/agenda/:id      		//update an agenda
+// POST /api/agenda/			//add new agendas
+// DELETE  /api/agenda/:id 	  	//delete an agenda
 
-router.get("/:id", (req, res) => {
+router.get("/:id", (req, res) => { 
 	//get an agenda
-	const id = req.params.id; // we want the id only of the user request object
+	const {id} = req.params; // we want the id and every thing associated with the id
 	Agenda.findByPk(id) // find one id
 		.then((agenda) => res.json(agenda)) // then respond with the result to front end written in json
 		.catch((err) => res.sendStatus(404)); //error handling just in case there is any possible error occurs

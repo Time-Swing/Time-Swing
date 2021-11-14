@@ -2,6 +2,7 @@ import React from 'react'
 import AgendaItem from '../../components/AgendaItem'
 import Loading from '../../components/Loading'
 
+//Get
 class AgendaListPage extends React.Component{
     state = {
         agendas:[],

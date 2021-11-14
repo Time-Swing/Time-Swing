@@ -9,8 +9,8 @@ const appConfigController = require('./appConfig.js');
 
 // Mount each controller under a specific route. These
 // will be prefixes to all routes defined inside the controller
-router.use('/posts', postsController);
-router.use('/agenda',agendaController)
+router.use('/posts', postsController); 
+router.use('/agenda',agendaController)  //localhost:8080/api/agenda/...
 router.use('/application-configuration', appConfigController);
 
 
