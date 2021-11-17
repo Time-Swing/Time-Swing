@@ -1,12 +1,15 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { DatePicker } from 'rsuite';
+import Autocomplete from "react-google-autocomplete";
 
+const API_KEY = process.env.API_KEY;
 
 class PostAgenda extends React.Component {
   state = {
     error: false,
     success: false,
+    more:'none',
+    moreOrless:"More",
     content:{
         title:'',
         timeStart:'',
@@ -33,6 +36,14 @@ class PostAgenda extends React.Component {
   })
 }
 
+  showMore = (e) =>{
+    if(this.state.more === ''){
+      this.setState({more:'none',moreOrless:'More'})
+    }
+    else{
+      this.setState({more:'',moreOrless:'Less'})
+    }
+  }
 
   saveAgenda = (event) => {
     console.log(JSON.stringify(this.state.content))
@@ -88,17 +99,7 @@ class PostAgenda extends React.Component {
           />
         </div>
         <br/>
-        <div>
-          <input 
-            type="text" 
-            placeholder="Address" 
-            name="address"
-            value={this.state.content.address}
-            onChange={this.handleChanged}
-          />
-          <br/>
-        </div>
-        <br/>
+
         <div>
           <input 
               type="datetime-local" 
@@ -106,6 +107,35 @@ class PostAgenda extends React.Component {
               value={this.state.content.timeStart}
               onChange={this.handleChanged}
             />
+        </div>
+        <br/>
+
+
+        <button onClick={this.showMore}>{this.state.moreOrless}</button>
+        <br/>
+        <div style={{display:this.state.more}}>
+        <div>
+          <br/>
+        <Autocomplete
+         apiKey={API_KEY}
+         options={{
+          types: ["address"],
+          componentRestrictions: { country: "us" }
+        }}
+        onPlaceSelected={(place) => {
+          console.log(place.formatted_address)
+          this.setState(preData=>{
+            return {
+                ...preData,
+                content:{
+                    ...preData.content,
+                    ["address"]:place.formatted_address
+                }
+            }
+        })
+        }}        
+/>;
+          <br/>
         </div>
         <br/>
         <div>
@@ -127,6 +157,8 @@ class PostAgenda extends React.Component {
           />
           <br/>
         </div>
+        </div>
+
         <br/>
         <div>
           <button className="btn btn-primary" onClick={this.saveAgenda}>Save Post</button>
