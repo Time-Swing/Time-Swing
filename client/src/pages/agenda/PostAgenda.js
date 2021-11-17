@@ -1,6 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import Autocomplete from "react-google-autocomplete";
 
+const API_KEY = process.env.API_KEY;
 
 class PostAgenda extends React.Component {
   state = {
@@ -108,20 +110,31 @@ class PostAgenda extends React.Component {
         </div>
         <br/>
 
+
         <button onClick={this.showMore}>{this.state.moreOrless}</button>
         <br/>
         <div style={{display:this.state.more}}>
         <div>
           <br/>
-
-          <input 
-            id="autocomplete"
-            type="text" 
-            placeholder="Address" 
-            name="address"
-            value={this.state.content.address}
-            onChange={this.handleChanged}
-          />
+        <Autocomplete
+         apiKey={API_KEY}
+         options={{
+          types: ["address"],
+          componentRestrictions: { country: "us" }
+        }}
+        onPlaceSelected={(place) => {
+          console.log(place.formatted_address)
+          this.setState(preData=>{
+            return {
+                ...preData,
+                content:{
+                    ...preData.content,
+                    ["address"]:place.formatted_address
+                }
+            }
+        })
+        }}        
+/>;
           <br/>
         </div>
         <br/>
