@@ -1,5 +1,7 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
+import { FormGroup, Typography, TextField } from "@material-ui/core";
+
 // import { DatePicker } from "rsuite";
 
 class PostAgenda extends React.Component {
@@ -72,48 +74,74 @@ class PostAgenda extends React.Component {
 		}
 
 		return (
-			<div>
+			<div class="container">
 				{errorMessage}
-				<div>
-					<input
-						type="text"
-						placeholder="Type the title"
-						name="title"
-						value={this.state.content.title}
-						onChange={this.handleChanged}
-					/>
+				<div class="row">
+					<div class="col-6 justify-center">
+						<label>Title </label>
+						&nbsp;
+						<input
+							type="text"
+							placeholder="Type the title"
+							name="title"
+							value={this.state.content.title}
+							onChange={this.handleChanged}
+						/>
+					</div>
+
+					<div class="col-6 justify-center">
+						<label>Address </label>
+						&nbsp;
+						<input
+							type="text"
+							placeholder="Address"
+							name="address"
+							value={this.state.content.address}
+							onChange={this.handleChanged}
+						/>
+					</div>
 				</div>
 				<br />
-				<div>
-					<input
-						type="text"
-						placeholder="Address"
-						name="address"
-						value={this.state.content.address}
-						onChange={this.handleChanged}
-					/>
-					<br />
+				<div class="row">
+					<div class="col-6">
+						<label>Time Start : </label>
+						&nbsp;
+						<input
+							type="datetime-local"
+							name="timeStart"
+							value={this.state.content.timeStart}
+							onChange={this.handleChanged}
+						/>
+					</div>
+
+					<div class="col-6">
+						<label>Time End : </label>
+						&nbsp;
+						<input
+							type="datetime-local"
+							name="timeEnd"
+							value={this.state.content.timeEnd}
+							onChange={this.handleChanged}
+						/>
+					</div>
 				</div>
 				<br />
-				<div>
-					<input
-						type="datetime-local"
-						name="timeStart"
-						value={this.state.content.timeStart}
-						onChange={this.handleChanged}
-					/>
-				</div>
-				<br />
-				<div>
-					<input
-						type="datetime-local"
-						name="timeEnd"
-						value={this.state.content.timeEnd}
-						onChange={this.handleChanged}
-					/>
-				</div>
-				<br />
-				<div>
+				<form>
+					<FormGroup style={({ display: "flex" }, { width: "100%" })}>
+						<Typography for="exampleText">Text Area</Typography>
+						<TextField
+							variant="outlined"
+							id="outlined-textarea"
+							multiline
+							type="text"
+							name="content"
+							placeholder="Content"
+							value={this.state.content.content}
+							onChange={this.handleChanged}
+						/>
+					</FormGroup>
+				</form>
+				{/* <div class="row-3">
 					<input
 						type="text"
 						name="content"
@@ -123,7 +151,9 @@ class PostAgenda extends React.Component {
 					/>
 					<br />
 				</div>
+				*/}
 				<br />
+
 				<div>
 					<button className="btn btn-primary" onClick={this.saveAgenda}>
 						Save Post
