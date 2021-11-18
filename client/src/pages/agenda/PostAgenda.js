@@ -148,8 +148,7 @@ class PostAgenda extends React.Component {
         </div>
         <br/>
         <div>
-          <input 
-            type="text" 
+          <textarea 
             name="content"
             placeholder="Content" 
             value={this.state.content.content}

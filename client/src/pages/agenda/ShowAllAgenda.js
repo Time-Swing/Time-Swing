@@ -1,6 +1,8 @@
 import React from 'react'
 import AgendaItem from '../../components/AgendaItem'
 import Loading from '../../components/Loading'
+import DeleteAgenda from './DeleteAgenda'
+import "../../css/agenda_style.css"
 
 class AgendaListPage extends React.Component{
     state = {
@@ -16,16 +18,23 @@ class AgendaListPage extends React.Component{
                 this.setState({
                     isLoading:false,
                     agendas:agendaData.map((agendaItem,index)=>{
-                        return <AgendaItem 
-                                    key={index}
-                                    id={agendaItem.id}
-                                    timeStart={agendaItem.timeStart}
-                                    timeEnd = {agendaItem.timeEnd}
-                                    title={agendaItem.title}
-                                    content={agendaItem.content}
-                                    address={agendaItem.address}
-                                    createdAt= {agendaItem.createdAt}
-                                />
+                        return <div className="agenda_row_style">
+                        <AgendaItem 
+                            key={index}
+                            id={agendaItem.id}
+                            timeStart={agendaItem.timeStart}
+                            timeEnd = {agendaItem.timeEnd}
+                            title={agendaItem.title}
+                            content={agendaItem.content}
+                            address={agendaItem.address}
+                            createdAt= {agendaItem.createdAt}
+                        />
+                        <div className="delete_style">
+                            <DeleteAgenda key={index} id={agendaItem.id} />
+                        </div>
+                        </div>
+
+                                
                     })
                 })
             })
