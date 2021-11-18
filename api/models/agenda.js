@@ -17,9 +17,9 @@ module.exports = (sequelize,DataTypes)=>{
             type:DataTypes.DATE,
             validate:{
                 len:[8,250],
-                notEmpty:true,
             }
-        }
+        },
+        title
     },{
         sequelize,
         modelName:'agenda'
