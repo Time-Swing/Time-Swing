@@ -36,8 +36,10 @@ function Navigation(props) {
 
 
 class App extends React.Component {
+  
   render() {
     return (
+      
         <Router>
           <Navigation />
           <div className="container-fluid text-center">
