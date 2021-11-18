@@ -2,8 +2,8 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import Autocomplete from "react-google-autocomplete";
 
-const API_KEY = process.env.API_KEY;
-
+const API_KEY = process.env.REACT_APP_API_KEY
+console.log(API_KEY)
 class PostAgenda extends React.Component {
   state = {
     error: false,
@@ -148,8 +148,7 @@ class PostAgenda extends React.Component {
         </div>
         <br/>
         <div>
-          <input 
-            type="text" 
+          <textarea 
             name="content"
             placeholder="Content" 
             value={this.state.content.content}

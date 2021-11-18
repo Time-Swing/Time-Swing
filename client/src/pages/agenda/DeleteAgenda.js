@@ -41,7 +41,7 @@ class DeleteAgenda extends React.Component{
           );
         }
         
-        if(this.state.success) return <Redirect to="/" />;//;
+        if(this.state.success) return window.location.reload();//;
 
         return(
             <div>
