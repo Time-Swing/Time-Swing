@@ -1,6 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom';
 
+
 class DeleteAgenda extends React.Component{
     state={
         success:false,
@@ -30,6 +31,7 @@ class DeleteAgenda extends React.Component{
     }
 
     render(){
+        // const history = useHistory()
         let errorMessage = null;
         if(this.state.error) {
           errorMessage = (
@@ -39,7 +41,7 @@ class DeleteAgenda extends React.Component{
           );
         }
         
-        if(this.state.success) return <Redirect path="/" exact />;
+        if(this.state.success) return <Redirect to="/" />;//;
 
         return(
             <div>

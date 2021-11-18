@@ -35,7 +35,11 @@ class AgendaListPage extends React.Component{
             })
             .catch(err=>console.log("Error on fetch all agendas"+err))
     }
-
+    // componentDidUpdate(prevProps, prevState) {
+    //     if (prevState.agendas !== this.state.agendas) {
+    //       console.log('The didferent found in the update.')
+    //     }
+    //   }
     render(){
         if(this.state.isLoading){return <Loading/>}
         return (
