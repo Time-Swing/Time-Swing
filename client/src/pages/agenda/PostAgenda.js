@@ -2,8 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import Autocomplete from "react-google-autocomplete";
 
-const API_KEY = process.env.REACT_APP_API_KEY
-console.log(API_KEY)
+
 class PostAgenda extends React.Component {
   state = {
     error: false,
@@ -117,7 +116,7 @@ class PostAgenda extends React.Component {
         <div>
           <br/>
         <Autocomplete
-         apiKey={API_KEY}
+         apiKey={process.env.REACT_APP_API_KEY}
          options={{
           types: ["address"],
           componentRestrictions: { country: "us" }
