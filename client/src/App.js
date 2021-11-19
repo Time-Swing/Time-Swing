@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 // import PostsListPage from './pages/PostsListPage';
 // import ShowPostPage from './pages/ShowPostPage';
-import PostFormPage from './pages/PostFormPage';
+
 import PostAgenda from './pages/agenda/PostAgenda';
 import AboutUsPage from './pages/AboutUsPage';
 import ShowAllAgenda from './pages/agenda/ShowAllAgenda'
@@ -19,11 +19,11 @@ import './App.css';
 function Navigation(props) {
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
-      <Link className="navbar-brand" to="/">Micro Blog</Link>
+      <Link className="navbar-brand" to="/">Time Swing</Link>
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/agenda/new">
-            Create a Micro Post
+            Create a Agenda
           </NavLink>
         </li>
         <li className="nav-item">
