@@ -31,6 +31,9 @@ module.exports = (sequelize, DataTypes) => {
           len: [3, 250],
         }
     },
+    mobileToken:{
+      type: DataTypes.STRING,
+    }
   }, {
     sequelize,
     modelName: 'user'
@@ -38,11 +41,18 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = (models) => {
     // associations can be defined here
+    // models.User.belongsToMany(models.Qrcode, {
+    //   through: 'UserQRCode'
+    // });
   };
 
   User.beforeSave((user, options) => {
     if(user.password) {
       user.hashedPassword = bcrypt.hashSync(user.password, 10);
+    }
+    if(user.userName && user.userPhone){
+      const toeknFactor = user.userName + user.userPhone;
+      user.mobileToken = bcrypt.hashSync(toeknFactor,10);
     }
   });
   return User;

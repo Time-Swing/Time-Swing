@@ -18,6 +18,7 @@ import './App.css';
 import { AuthProvider } from './context/AuthContext';
 import AuthButton from './components/AuthButton';
 import PrivateRoute from './components/PrivateRoute';
+import QRcode from './components/QRcode';
 
 
 function Navigation(props) {
@@ -38,6 +39,9 @@ function Navigation(props) {
         <li>
           <AuthButton/>
         </li>
+        {/* <li>
+          <QRcode qrcode=""/>
+        </li> */}
       </ul>
     </nav>
   );
