@@ -1,9 +1,19 @@
-import React from 'react'
+//import { response } from 'express';
+import React,{useState,useEffect} from 'react'
 
-function QRcode(props){
+function QRcode(){
+    const [qrcode,setQrcode] = useState(false);
+    useEffect(() => {
+        fetch('/api/auth/reqQRCode')
+        .then(response=>response.json())
+        .then(data=>{
+            console.log(data)
+            setQrcode(data)
+        })
+    }, [])
     return (
         <div>
-            <pre>props.qrcode</pre>
+            <img src={qrcode} alt="QRcode"/>
         </div>
     )
 }

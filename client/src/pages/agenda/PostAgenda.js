@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import Autocomplete from "react-google-autocomplete";
 
 const API_KEY = process.env.REACT_APP_API_KEY
-console.log(API_KEY)
+// console.log(API_KEY)
 class PostAgenda extends React.Component {
     state = {
       error: false,
@@ -18,20 +18,6 @@ class PostAgenda extends React.Component {
           address:''
       }, 
   }
-
-  // componentDidMount(){
-  //   const url='/api/auth/login'
-  //   fetch(url)
-  //       .then(response=>{
-  //           if(!response.ok){
-  //               throw new Error('Unauthenticated')
-  //           }
-
-  //           return response.json()
-  //       })
-  //       .then(body=>setUser(body))
-  //       .catch(err=>setUser(false))
-  // }
 
   handleChanged = (event) =>{
     const {name, value} = event.target

@@ -25,6 +25,7 @@ router.post("/signup", (req, res) => {
 // 	"password":"test123456"
 // } for this login need to provided the email and password
 // not the userName and passpword
+
 router.post('/login',
 	passport.authenticate('local'),//only this auth passed the next func will run
 	(req,res)=>{
@@ -41,29 +42,29 @@ router.get('/login',(req,res)=>{
 	}
 });
 //handle request for a QRcode
-router.get('/loginQRCode',(req,res)=>{
+router.get('/reqQRCode',(req,res)=>{
 	if(req.user){
 		//1. create a qrcode record in the QRcode table
-		//2. return QRcode object to frontend(may be just id)
+		//2. return QRcode object to frontend(which include link to QRcode login request to the backend)
 		Qrcode.create({
 			createTime: new Date().toString(),
-			codeStatus: "0",
+			codeStatus: "0",                     //0 unUse   1 used success  -1 expired
 			mobileToken: req.user.mobileToken,
 		})
 		.then(qrCode =>{
-			
-			const url = "I got a qrcode from back-end "+qrCode.dataValues.id
+			const urlQR = "https://localhost:3000/QRcodeLogin?token="+qrCode.dataValues.mobileToken
 			// console.log(url)
-			const theQRCode = QRcode.toString(url,err=>console.log("error happend in generate QR code : "+err))
-			// console.log(theQRCode)
-			res.json(theQRCode)
+			QRcode.toDataURL(urlQR,function(err,url){
+				// console.log(url)
+				res.json(url)
+			})
 		})
 		.catch(err=>{
 			console.log("there is a error on creating QR_code "+err)
-			res.status(400).json({msg:'Failed Create QRCode1',err})
+			res.status(400).json({msg:'Failed Create QRCode',err})
 		})
 	}else{
-		res.sendStatus(401).json({msg:'Failed Create QRCode2',err})
+		res.sendStatus(400).json({msg:'Failed Create QRCode in the DB',err})
 	}
 })
 router.post('/logout',(req,res)=>{
