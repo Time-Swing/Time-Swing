@@ -14,6 +14,7 @@ import AboutUsPage from './pages/AboutUsPage';
 import ShowAllAgenda from './pages/agenda/ShowAllAgenda'
 import ShowAgenda from './pages/agenda/ShowAgenda';
 import './App.css';
+import Login from './pages/login/login';
 
 
 function Navigation(props) {
@@ -29,6 +30,11 @@ function Navigation(props) {
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/about-us">
             About Us
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" exact to="/login">
+            login
           </NavLink>
         </li>
       </ul>
@@ -48,7 +54,9 @@ class App extends React.Component {
                 <Route path="/agenda/new" component={PostAgenda} />
                 <Route path="/agenda/:id" component={ShowAgenda} />
                 <Route path="/about-us" component={AboutUsPage} />
+                <Route path="/login" component={Login} />
                 <Route path="/" component={ShowAllAgenda} />
+                
               </Switch>
             </div>
           </div>
