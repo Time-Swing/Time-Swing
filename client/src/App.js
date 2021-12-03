@@ -12,13 +12,14 @@ import PostAgenda from './pages/agenda/PostAgenda';
 import AboutUsPage from './pages/AboutUsPage';
 import ShowAllAgenda from './pages/agenda/ShowAllAgenda'
 import ShowAgenda from './pages/agenda/ShowAgenda';
-import Login  from './pages/login/Login';
+import Login  from './pages/login/login';
 import './App.css';
 import { AuthProvider } from './context/AuthContext';
 import AuthButton from './components/AuthButton';
 import PrivateRoute from './components/PrivateRoute';
 import QRcode from './components/QRcode';
 import QRcodeLogin from './pages/login/QRcodeLogin';
+import Signup from './pages/login/signup';
 
 function Navigation(props) {
   return (
@@ -61,8 +62,8 @@ class App extends React.Component {
                 <Route path="/QRcodeLogin" component={QRcodeLogin} />
                 <Route path="/about-us" component={AboutUsPage} />
                 <Route path="/login" component={Login} />
+                <Route path="/signup" component={Signup} />
                 <Route path="/" component={ShowAllAgenda} />
-                
               </Switch>
             </div>
           </div>

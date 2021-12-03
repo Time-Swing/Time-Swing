@@ -20,7 +20,28 @@ const AuthProvider=({children})=>{
             .then(body=>setUser(body))
             .catch(err=>setUser(false))
     },[])
-    
+    const signup = (email,password,phone)=>{
+        const url = 'api/auth/signup'
+        return fetch(url,{
+            method:'POST',
+            body:JSON.stringify({email,password,phone}),
+            headers:{
+                'Content-Type':'application/json',
+            }
+        })
+        .then((response)=>{
+            if(!response.ok){
+                throw new Error('Signup Failed')
+            }
+
+            return response.json()
+        })
+        .then((body)=>{
+            setUser(body)
+            return body
+        });
+    }//end of signup
+
     const authenticate = (email,password) =>{
         const url='/api/auth/login'
         return fetch(url,{
@@ -82,6 +103,7 @@ const AuthProvider=({children})=>{
         <Provider value={{
             authenticate,
             authWithQRcode,
+            signup,
             signout,
             isAuthenticated: user?true:false,
             user,

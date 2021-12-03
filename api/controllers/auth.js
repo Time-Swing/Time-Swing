@@ -7,9 +7,9 @@ const QRcode = require('qrcode');
 router.post("/signup", (req, res) => {
 	console.log("PSOT body:" + req.body);
 	User.create({
-		userName: req.body.userName,
+		userName: req.body.email,
 		password: req.body.password,
-		userPhone: req.body.userPhone,
+		userPhone: req.body.phone,
 	})
 	.then((user)=>{
 		req.login(user,()=>{res.status(201).json(user)})
