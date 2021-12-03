@@ -2,6 +2,7 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import Autocomplete from "react-google-autocomplete";
 
+<<<<<<< HEAD
 const API_KEY = process.env.REACT_APP_API_KEY;
 console.log(API_KEY);
 class PostAgenda extends React.Component {
@@ -18,6 +19,40 @@ class PostAgenda extends React.Component {
 			address: "",
 		},
 	};
+=======
+const API_KEY = process.env.REACT_APP_API_KEY
+// console.log(API_KEY)
+class PostAgenda extends React.Component {
+    state = {
+      error: false,
+      success: false,
+      more:'none',
+      moreOrless:"More",
+      content:{
+          title:'',
+          timeStart:'',
+          timeEnd:'',
+          content:'',
+          address:''
+      }, 
+  }
+
+  handleChanged = (event) =>{
+    const {name, value} = event.target
+    // console.log(name,value)
+    // console.log("name: "+name+ "...value:"+value)
+    this.setState(preData=>{
+      return {
+          ...preData,
+          content:{
+              ...preData.content,
+              [name]:value
+          }
+      }
+      
+  })
+}
+>>>>>>> dc5fa91addd9f99a6cfcb9fc1fb51c8337b35265
 
 	handleChanged = (event) => {
 		const { name, value } = event.target;
@@ -34,13 +69,19 @@ class PostAgenda extends React.Component {
 		});
 	};
 
-	showMore = (e) => {
-		if (this.state.more === "") {
-			this.setState({ more: "none", moreOrless: "More" });
-		} else {
-			this.setState({ more: "", moreOrless: "Less" });
-		}
-	};
+  saveAgenda = (event) => {
+    // console.log(JSON.stringify(this.state.content))
+    fetch("/api/agenda/", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(this.state.content),
+    })
+      .then(res => {
+        if(res.ok) {
+          return res.json()
+        }
 
 	saveAgenda = (event) => {
 		console.log(JSON.stringify(this.state.content));

@@ -1,4 +1,5 @@
 const express = require("express"); //importing express
+const passport = require("../middlewares/authentication");
 const router = express.Router(); // use router module from express to handle any req/res
 const db = require("../models"); // imports the database
 const { Agenda } = db; //imports the specific specific Agenda module
@@ -15,7 +16,7 @@ const { Agenda } = db; //imports the specific specific Agenda module
 // POST /api/agendas/			//add new agendas
 // DELETE  /api/agendas/:id 	  	//delete an agenda
 
-router.get("/:id", (req, res) => {
+router.get("/:id", passport.isAuthenticated(),(req, res) => {
 	//get an agenda
 	const id = req.params.id; // we want the id only of the user request object
 	Agenda.findByPk(id) // find one id
@@ -23,13 +24,13 @@ router.get("/:id", (req, res) => {
 		.catch((err) => res.sendStatus(404)); //error handling just in case there is any possible error occurs
 });
 
-router.get("/", (req, res) => {
+router.get("/",(req, res) => {
 	Agenda.findAll({}) //find all agendas
 		.then((agendas) => res.json(agendas)) // then respond with the result to front end written in json
 		.catch((err) => res.Status(404).json(err)); //error handling just in case there is any possible error occurs
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", passport.isAuthenticated(),(req, res) => {
 	//update one agenda inforamtion
 	const id = req.params.id; // we want the id only of the user request object
 	Agenda.findByPk(id).then((agenda) => {
@@ -50,7 +51,7 @@ router.put("/:id", (req, res) => {
 	});
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", passport.isAuthenticated(),(req, res) => {
 	//delete an agenda
 	const id = req.params.id; // we want the id only of the user request object
 	Agenda.findByPk(id).then((agenda) => {
@@ -62,7 +63,7 @@ router.delete("/:id", (req, res) => {
 	});
 });
 
-router.post("/", (req, res) => {
+router.post("/",(req, res) => {
 	//add a new agenda
 	const newAgenda = req.body; // get front-end object from user
 	Agenda.create(newAgenda) //create new instance and save into the DB
