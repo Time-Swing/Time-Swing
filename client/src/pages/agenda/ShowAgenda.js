@@ -2,13 +2,15 @@ import React from 'react'
 import AgendaItem from '../../components/AgendaItem'
 import Loading from '../../components/Loading'
 import { Redirect } from 'react-router-dom'
+import Map from '../../components/Map'
 
 //This page is for showing a agendaItem in detail
 class ShowAgenda extends React.Component{
     state={
         agendaItem:null,
         isLoading:true,
-        notFound:false
+        notFound:false,
+        address:null,
     }
 
     componentDidMount(){
@@ -21,7 +23,8 @@ class ShowAgenda extends React.Component{
                 // console.log(target)
                 this.setState({
                     agendaItem:<AgendaItem {...target} />,
-                    isLoading:false
+                    isLoading:false,
+                    address:target.address,
                 })
             })
             .catch(err=>{
@@ -33,8 +36,13 @@ class ShowAgenda extends React.Component{
     render(){
         if(this.state.notFound) {return <Redirect to="/" />};
         if(this.state.isLoading){return <Loading/>}
+        
         return (
-            this.state.agendaItem
+            <div>{this.state.agendaItem}
+            {this.state.address && <Map address={this.state.address}/>}
+            </div>
+            
+            
         )
     }
 }

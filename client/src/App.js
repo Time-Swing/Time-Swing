@@ -62,6 +62,7 @@ class App extends React.Component {
                 <Route path="/about-us" component={AboutUsPage} />
                 <Route path="/login" component={Login} />
                 <Route path="/" component={ShowAllAgenda} />
+                
               </Switch>
             </div>
           </div>
