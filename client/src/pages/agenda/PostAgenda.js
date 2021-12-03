@@ -2,24 +2,6 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import Autocomplete from "react-google-autocomplete";
 
-<<<<<<< HEAD
-const API_KEY = process.env.REACT_APP_API_KEY;
-console.log(API_KEY);
-class PostAgenda extends React.Component {
-	state = {
-		error: false,
-		success: false,
-		more: "none",
-		moreOrless: "More",
-		content: {
-			title: "",
-			timeStart: "",
-			timeEnd: "",
-			content: "",
-			address: "",
-		},
-	};
-=======
 const API_KEY = process.env.REACT_APP_API_KEY
 // console.log(API_KEY)
 class PostAgenda extends React.Component {
@@ -52,7 +34,6 @@ class PostAgenda extends React.Component {
       
   })
 }
->>>>>>> dc5fa91addd9f99a6cfcb9fc1fb51c8337b35265
 
 	handleChanged = (event) => {
 		const { name, value } = event.target;
