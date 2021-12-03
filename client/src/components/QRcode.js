@@ -1,4 +1,4 @@
-//import { response } from 'express';
+
 import React,{useState,useEffect} from 'react'
 
 function QRcode(){
@@ -7,7 +7,7 @@ function QRcode(){
         fetch('/api/auth/reqQRCode')
         .then(response=>response.json())
         .then(data=>{
-            console.log(data)
+            // console.log(data)
             setQrcode(data)
         })
     }, [])
