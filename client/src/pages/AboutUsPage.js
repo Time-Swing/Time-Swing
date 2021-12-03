@@ -2,7 +2,7 @@ import React from 'react';
 
 function AboutUsPage(props) {
   return (
-    <div>A little info about us.</div>
+    <div>Time Swing is a cross plafrom agenda record application :)</div>
   );
 }
 
