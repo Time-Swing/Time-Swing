@@ -41,18 +41,22 @@ router.get('/login',(req,res)=>{
 		res.sendStatus(401)
 	}
 });
+
+router.get('/QRcodeLogin',(req,res)=>{
+
+})
 //handle request for a QRcode
 router.get('/reqQRCode',(req,res)=>{
 	if(req.user){
 		//1. create a qrcode record in the QRcode table
-		//2. return QRcode object to frontend(which include link to QRcode login request to the backend)
+		//2. return QRcode object to frontend
 		Qrcode.create({
 			createTime: new Date().toString(),
 			codeStatus: "0",                     //0 unUse   1 used success  -1 expired
 			mobileToken: req.user.mobileToken,
 		})
 		.then(qrCode =>{
-			const urlQR = "https://localhost:3000/QRcodeLogin?token="+qrCode.dataValues.mobileToken
+			const urlQR = "https://localhost:3000/QRcodeLogin/?token="+qrCode.dataValues.mobileToken
 			// console.log(url)
 			QRcode.toDataURL(urlQR,function(err,url){
 				// console.log(url)

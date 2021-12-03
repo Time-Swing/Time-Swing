@@ -17,7 +17,7 @@ import { AuthProvider } from './context/AuthContext';
 import AuthButton from './components/AuthButton';
 import PrivateRoute from './components/PrivateRoute';
 import QRcode from './components/QRcode';
-
+import QRcodeLogin from './pages/login/QRcodeLogin';
 
 function Navigation(props) {
   return (
@@ -55,6 +55,7 @@ class App extends React.Component {
                 <PrivateRoute path="/agenda/new" component={PostAgenda} />
                 <PrivateRoute path="/agenda/:id" component={ShowAgenda} />
                 <Route path="/QRcode" component={QRcode} />
+                <Route path="/QRcodeLogin" component={QRcodeLogin} />
                 <Route path="/about-us" component={AboutUsPage} />
                 <Route path="/login" component={Login} />
                 <Route path="/" component={ShowAllAgenda} />
