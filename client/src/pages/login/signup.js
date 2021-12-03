@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect,Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
-import TempLogo from "../../images/tempLogo.png";
+import LogoWhite from "../../images/Time_Swing_for_white.png";
 import "../../css/login_style.css";
 
 class Signup extends React.Component{
@@ -50,7 +50,7 @@ class Signup extends React.Component{
             <div className="login_form">
                 <form onSubmit={this.signup}>
                     {err}
-                    <img className="mb-4" src={TempLogo} alt="" width="72" height="57"/>
+                    <img className="mb-4" src={LogoWhite} alt="" width="250" height="250"/>
                     <h1 className="h3 mb-3 fw-normal">create you own account today</h1>
 
                     <div className="form-floating">
