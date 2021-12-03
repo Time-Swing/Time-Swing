@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import TempLogo from "../../images/tempLogo.png";
+import "../../css/login_style.css";
 
 class Login extends React.Component{
     state = {
@@ -59,12 +60,8 @@ class Login extends React.Component{
                     <input type="password" className="form-control" id="floatingPassword" placeholder="Password" onChange={this.handleChange('password')}/>
                     <label>Password</label>
                     </div>
+                    <br/>
 
-                    <div className="checkbox mb-3">
-                    <label>
-                        <input type="checkbox" value="remember-me"/> Remember me
-                    </label>
-                    </div>
                     <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
                     <p><a href='/'>forget password</a></p>
                     <p className="mt-5 mb-3 text-muted">© 2017–2021</p>

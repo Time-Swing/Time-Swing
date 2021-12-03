@@ -43,6 +43,21 @@ const AuthProvider=({children})=>{
         });
     }//end of authenticate
 
+    const authWithQRcode = (inputToken)=>{
+        const url="/api/auth/QRcodeLogin?inputToken="+inputToken
+        fetch(url)
+            .then(result=>{
+                if(!result.ok){
+                    throw new Error('Login Failed')
+                }
+                return result.json()
+            })
+            .then((body)=>{
+                setUser(body)
+                return body
+            });
+    }//end of authWithQRcode
+    
     const signout =()=>{
         const url='/api/auth/logout'
         return fetch(url,{
@@ -66,6 +81,7 @@ const AuthProvider=({children})=>{
     return (
         <Provider value={{
             authenticate,
+            authWithQRcode,
             signout,
             isAuthenticated: user?true:false,
             user,
