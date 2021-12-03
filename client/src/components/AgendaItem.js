@@ -22,9 +22,9 @@ function AgendaItem(props){
             <p>{props.title}</p>
             </Link>
             <p>Begin At: {startTime.toString()}</p>
-            {props.content && <pre>Content: <br/> {props.content}</pre>}
             {props.address && <p>Address: {props.address}</p>}
             <p style={{display:timeEndhide}}>End At:   {timeEnd.toString()}</p>
+            {props.content && <pre>Content: <br/> {props.content}</pre>}
         </div>
 
     }else{
