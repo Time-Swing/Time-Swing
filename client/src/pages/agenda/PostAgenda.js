@@ -3,26 +3,25 @@ import { Redirect } from 'react-router-dom';
 import Autocomplete from "react-google-autocomplete";
 
 const API_KEY = process.env.REACT_APP_API_KEY
-console.log(API_KEY)
+// console.log(API_KEY)
 class PostAgenda extends React.Component {
-  state = {
-    error: false,
-    success: false,
-    more:'none',
-    moreOrless:"More",
-    content:{
-        title:'',
-        timeStart:'',
-        timeEnd:'',
-        content:'',
-        address:''
-    }, 
-}
-
+    state = {
+      error: false,
+      success: false,
+      more:'none',
+      moreOrless:"More",
+      content:{
+          title:'',
+          timeStart:'',
+          timeEnd:'',
+          content:'',
+          address:''
+      }, 
+  }
 
   handleChanged = (event) =>{
     const {name, value} = event.target
-    console.log(name,value)
+    // console.log(name,value)
     // console.log("name: "+name+ "...value:"+value)
     this.setState(preData=>{
       return {
@@ -46,10 +45,9 @@ class PostAgenda extends React.Component {
   }
 
   saveAgenda = (event) => {
-    console.log(JSON.stringify(this.state.content))
+    // console.log(JSON.stringify(this.state.content))
     fetch("/api/agenda/", {
       method: 'POST',
-      credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },

@@ -20,7 +20,7 @@ class ShowAgenda extends React.Component{
             .then(res=>res.json())
             .then(target=>{
                 target["isIndetail"] = true
-                console.log(target)
+                // console.log(target)
                 this.setState({
                     agendaItem:<AgendaItem {...target} />,
                     isLoading:false,
