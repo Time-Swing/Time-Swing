@@ -44,9 +44,9 @@ class AgendaListPage extends React.Component{
     render(){
         if(this.state.isLoading){return <Loading/>}
         return (
-            <div>
+            <div><center>
                 {this.state.agendas}
-            </div>
+            </center></div>
         )
     }
 }

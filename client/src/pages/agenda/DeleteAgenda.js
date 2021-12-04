@@ -1,5 +1,8 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router'
+import "../../css/agenda_style.css"
+
+
 
 
 class DeleteAgenda extends React.Component{
@@ -8,6 +11,7 @@ class DeleteAgenda extends React.Component{
         error:false,
     }
 
+    
     handleDelete=(event)=>{
         //make a url call
         const url='/api/agenda/'+this.props.id
@@ -28,6 +32,7 @@ class DeleteAgenda extends React.Component{
                 error:true,
             })
         })
+
     }
 
     render(){
@@ -40,14 +45,12 @@ class DeleteAgenda extends React.Component{
             </div>
           );
         }
-        
-        if(this.state.success) return window.location.reload();//;
-
+        if(this.state.success){return <Redirect to={"/agenda/"+this.props.id} />};
         return(
             <div>
                 {errorMessage}
                 <div>
-                    <button onClick={this.handleDelete} > X </button>
+                    <button className="delete_button" onClick={this.handleDelete} > ✘ </button>
                 </div>
             </div>
         )

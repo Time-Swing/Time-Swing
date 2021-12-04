@@ -1,27 +1,32 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import Autocomplete from "react-google-autocomplete";
+import "../../css/post_style.css"
 
+<<<<<<< HEAD
 
+=======
+const API_KEY = process.env.REACT_APP_API_KEY
+// console.log(API_KEY)
+>>>>>>> b2595be81e7114b7650f3a0e0605f0d57146a000
 class PostAgenda extends React.Component {
-  state = {
-    error: false,
-    success: false,
-    more:'none',
-    moreOrless:"More",
-    content:{
-        title:'',
-        timeStart:'',
-        timeEnd:'',
-        content:'',
-        address:''
-    }, 
-}
-
+    state = {
+      error: false,
+      success: false,
+      more:'none',
+      moreOrless:"▼",
+      content:{
+          title:'',
+          timeStart:'',
+          timeEnd:'',
+          content:'',
+          address:''
+      }, 
+  }
 
   handleChanged = (event) =>{
     const {name, value} = event.target
-    console.log(name,value)
+    // console.log(name,value)
     // console.log("name: "+name+ "...value:"+value)
     this.setState(preData=>{
       return {
@@ -37,18 +42,17 @@ class PostAgenda extends React.Component {
 
   showMore = (e) =>{
     if(this.state.more === ''){
-      this.setState({more:'none',moreOrless:'More'})
+      this.setState({more:'none',moreOrless:'▼'})
     }
     else{
-      this.setState({more:'',moreOrless:'Less'})
+      this.setState({more:'',moreOrless:'▲'})
     }
   }
 
   saveAgenda = (event) => {
-    console.log(JSON.stringify(this.state.content))
+    // console.log(JSON.stringify(this.state.content))
     fetch("/api/agenda/", {
       method: 'POST',
-      credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -86,10 +90,10 @@ class PostAgenda extends React.Component {
     }
 
     return (
-      <div>
+      <div className="Post">
         { errorMessage }
         <div>
-          <input 
+          <input className="input" 
             type="text" 
             placeholder="Type the title" 
             name="title"
@@ -100,7 +104,7 @@ class PostAgenda extends React.Component {
         <br/>
 
         <div>
-          <input 
+          <input className="input"
               type="datetime-local" 
               name="timeStart"
               value={this.state.content.timeStart}
@@ -108,15 +112,13 @@ class PostAgenda extends React.Component {
             />
         </div>
         <br/>
-
-
-        <button onClick={this.showMore}>{this.state.moreOrless}</button>
+        <button class="lessMore" onClick={this.showMore}>{this.state.moreOrless}</button>
         <br/>
         <div style={{display:this.state.more}}>
         <div>
-          <br/>
-        <Autocomplete
-         apiKey={process.env.REACT_APP_API_KEY}
+        <br/>
+        <Autocomplete className="input"
+         apiKey={API_KEY}
          options={{
           types: ["address"],
           componentRestrictions: { country: "us" }
@@ -133,12 +135,12 @@ class PostAgenda extends React.Component {
             }
         })
         }}        
-/>;
+/>
           <br/>
         </div>
         <br/>
         <div>
-        <input 
+        <input className="input"
               type="datetime-local" 
               name="timeEnd"
               value={this.state.content.timeEnd}
@@ -147,7 +149,7 @@ class PostAgenda extends React.Component {
         </div>
         <br/>
         <div>
-          <textarea 
+          <textarea className="content"
             name="content"
             placeholder="Content" 
             value={this.state.content.content}
@@ -159,7 +161,7 @@ class PostAgenda extends React.Component {
 
         <br/>
         <div>
-          <button className="btn btn-primary" onClick={this.saveAgenda}>Save Post</button>
+          <button className="button" onClick={this.saveAgenda}>Save Post</button>
         </div>
       </div>
     );
