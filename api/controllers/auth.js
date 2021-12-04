@@ -3,6 +3,7 @@ const router = express.Router(); // use router module from express to handle any
 const { User,Qrcode } = require('../models'); //imports the specific specific Agenda module
 const passport = require("../middlewares/authentication");
 const QRcode = require('qrcode');
+const bcrypt = require('bcryptjs');
 
 router.post("/signup", (req, res) => {
 	console.log("PSOT body:" + req.body);
@@ -42,22 +43,46 @@ router.get('/login',(req,res)=>{
 	}
 });
 
-router.get('/QRcodeLogin',(req,res)=>{
-
+router.post('/QRcodeLogin',(req,res)=>{
+	const inputToken = req.body.inputToken
+	console.log("\n\n "+inputToken+"\n\n")
+	Qrcode.findOne({
+		where:{mobileToken:inputToken}
+	})
+	.then(foundQRcode=>{
+		console.log(foundQRcode)
+		if(foundQRcode){//success find in the qrcode record
+			console.log("inside the foundQRcode")
+			User.findOne({
+				where:{id:foundQRcode.dataValues.userId}
+			})
+			.then(user=>{
+				console.log("the user is herer: "+user)//may need to change tempUser to user
+			req.login(user,()=>{res.status(201).json(user)})
+			})
+		}
+	})
+	.catch((err)=>{
+		res.status(400).json({msg:'Failed to match with Token',err})
+	})
+	
 })
+
 //handle request for a QRcode
 router.get('/reqQRCode',(req,res)=>{
 	if(req.user){
 		//1. create a qrcode record in the QRcode table
-		//2. return QRcode object to frontend
+		//2. return QRcode object to frontend, 
+		const tempToken = bcrypt.hashSync(new Date().toString(),10)//the mobileToken should be unqieu
 		Qrcode.create({
+			userId:req.user.id,
 			createTime: new Date().toString(),
 			codeStatus: "0",                     //0 unUse   1 used success  -1 expired
-			mobileToken: req.user.mobileToken,
+			mobileToken: tempToken,
 		})
 		.then(qrCode =>{
-			const urlQR = "https://localhost:3000/QRcodeLogin/?token="+qrCode.dataValues.mobileToken
-			// console.log(url)
+			const urlQR = "http://localhost:3000/QRcodeLogin?token="+qrCode.dataValues.mobileToken
+			console.log(urlQR)
 			QRcode.toDataURL(urlQR,function(err,url){
 				// console.log(url)
 				res.json(url)
@@ -68,7 +93,7 @@ router.get('/reqQRCode',(req,res)=>{
 			res.status(400).json({msg:'Failed Create QRCode',err})
 		})
 	}else{
-		res.sendStatus(400).json({msg:'Failed Create QRCode in the DB',err})
+		res.sendStatus(400).json({msg:'Failed Create QRCode in the DB'})
 	}
 })
 router.post('/logout',(req,res)=>{

@@ -65,18 +65,29 @@ const AuthProvider=({children})=>{
     }//end of authenticate
 
     const authWithQRcode = (inputToken)=>{
-        const url="/api/auth/QRcodeLogin?inputToken="+inputToken
-        fetch(url)
-            .then(result=>{
-                if(!result.ok){
-                    throw new Error('Login Failed')
-                }
-                return result.json()
-            })
-            .then((body)=>{
-                setUser(body)
-                return body
-            });
+        console.log("in the authQR :"+inputToken)
+        const url="/api/auth/QRcodeLogin"
+        //use post method here
+        fetch(url,{
+            method:'POST',
+            body:JSON.stringify({inputToken}),
+            headers:{
+                'Content-Type':'application/json',
+            }
+        })
+        .then(result=>{
+            console.log("in the returning reuslt")
+            if(!result.ok){
+                throw new Error('QRLogin Failed')
+            }
+            return result.json()
+        })
+        .then((body)=>{
+            console.log("in the returning body "+body)
+            setUser(body)
+            return true
+        })
+        .catch(err=>{console.log(err)});
     }//end of authWithQRcode
     
     const signout =()=>{

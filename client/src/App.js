@@ -28,9 +28,7 @@ function Navigation(props) {
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/agenda/new">
-
             Create a New Agenda
-
           </NavLink>
         </li>
         <li className="nav-item">
