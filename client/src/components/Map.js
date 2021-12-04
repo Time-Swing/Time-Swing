@@ -3,7 +3,8 @@ import {
     withScriptjs,
     withGoogleMap,
     GoogleMap,
-    Marker,} from "react-google-maps";
+    Marker,
+    InfoWindow} from "react-google-maps";
 import Geocode from 'react-geocode';
 
 class Map extends React.Component{
@@ -22,22 +23,26 @@ class Map extends React.Component{
 
     }
     render(){
+        const googleLink="https://maps.googleapis.com/maps/api/js?key="+process.env.REACT_APP_API_KEY+"&v=3.exp&libraries=geometry,drawing,places"
         const MapWithAMarker = withScriptjs(withGoogleMap(props =>
             <GoogleMap
                 defaultZoom={15}
                 defaultCenter={this.state}
             >
                 <Marker
-                position={this.state}
-                />
+                position={this.state}>
+                    <InfoWindow>
+                        <div>{this.props.address}</div>
+                    </InfoWindow>
+                </Marker>
             </GoogleMap>
             ));
         return(
             <div>
                 <MapWithAMarker
-                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwPafMX9xyduviqWNIry3cFw-w-09upco&v=3.exp&libraries=geometry,drawing,places"
+                googleMapURL={googleLink}
                 loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={<div style={{ height: `400px` }} />}
+                containerElement={<div style={{ height: `200px` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
                 />
             </div>

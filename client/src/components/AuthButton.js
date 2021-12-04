@@ -1,6 +1,7 @@
 import React,{useContext} from 'react'
 import {withRouter,Link} from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
+import "../css/nav_style.css"
 
 const classes = "btn btn-primary"
 
@@ -15,8 +16,8 @@ const AuthButton = withRouter(({history})=>{
     }
 
     return (
-        <div className='text-white'>
-            <Link to='/QRcode'>Welcome! {auth.user.userName}</Link>
+        <div>
+            <Link to='/QRcode'>Welcome! {auth.user.userName.match(/(\S*)@/)[1]}</Link>
             <button className={classes} onClick={logout}>Logout</button>
         </div>
     )

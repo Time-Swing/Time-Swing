@@ -37,10 +37,13 @@ function Navigation(props) {
             About
           </NavLink>
         </li>
-        <li>
+        </ul>
+        <ul class="nav justify-content-end">
+        <li className="nav-item">
           <AuthButton/>
         </li>
-      </ul>
+        </ul>
+
     </nav>
   );
 }

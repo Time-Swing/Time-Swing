@@ -1,5 +1,6 @@
-import {React, useState} from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
+import "../../src/css/show_style.css"
 
 
 
@@ -19,14 +20,11 @@ function AgendaItem(props){
         renderContent = 
         <div>
             <Link to={"/agenda/"+props.id}>
-            <p>{props.title}</p>
+            <p className="title">{props.title}</p>
             </Link>
-            <p>Begin At: {startTime.toString()}</p>
-            {props.address && <p>Address: {props.address}</p>}
-
-
-            <p style={{display:timeEndhide}}>End At:   {timeEnd.toString()}</p>
-            {props.content && <pre>Content: <br/> {props.content}</pre>}
+            <p>Begin At: <p className="output">{startTime.toString()}</p></p>
+            <p style={{display:timeEndhide}}>End At:<p className="output">{timeEnd.toString()}</p></p>
+            {props.content && <p>Content: <pre className="output"> {props.content}</pre></p>}
         </div>
 
     }else{

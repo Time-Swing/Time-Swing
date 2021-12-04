@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import Autocomplete from "react-google-autocomplete";
+import "../../css/post_style.css"
 
 const API_KEY = process.env.REACT_APP_API_KEY
 // console.log(API_KEY)
@@ -9,7 +10,7 @@ class PostAgenda extends React.Component {
       error: false,
       success: false,
       more:'none',
-      moreOrless:"More",
+      moreOrless:"▼",
       content:{
           title:'',
           timeStart:'',
@@ -37,10 +38,10 @@ class PostAgenda extends React.Component {
 
   showMore = (e) =>{
     if(this.state.more === ''){
-      this.setState({more:'none',moreOrless:'More'})
+      this.setState({more:'none',moreOrless:'▼'})
     }
     else{
-      this.setState({more:'',moreOrless:'Less'})
+      this.setState({more:'',moreOrless:'▲'})
     }
   }
 
@@ -85,10 +86,10 @@ class PostAgenda extends React.Component {
     }
 
     return (
-      <div>
+      <div className="Post">
         { errorMessage }
         <div>
-          <input 
+          <input className="input" 
             type="text" 
             placeholder="Type the title" 
             name="title"
@@ -99,7 +100,7 @@ class PostAgenda extends React.Component {
         <br/>
 
         <div>
-          <input 
+          <input className="input"
               type="datetime-local" 
               name="timeStart"
               value={this.state.content.timeStart}
@@ -107,14 +108,12 @@ class PostAgenda extends React.Component {
             />
         </div>
         <br/>
-
-
-        <button onClick={this.showMore}>{this.state.moreOrless}</button>
+        <button class="lessMore" onClick={this.showMore}>{this.state.moreOrless}</button>
         <br/>
         <div style={{display:this.state.more}}>
         <div>
-          <br/>
-        <Autocomplete
+        <br/>
+        <Autocomplete className="input"
          apiKey={API_KEY}
          options={{
           types: ["address"],
@@ -132,12 +131,12 @@ class PostAgenda extends React.Component {
             }
         })
         }}        
-/>;
+/>
           <br/>
         </div>
         <br/>
         <div>
-        <input 
+        <input className="input"
               type="datetime-local" 
               name="timeEnd"
               value={this.state.content.timeEnd}
@@ -146,7 +145,7 @@ class PostAgenda extends React.Component {
         </div>
         <br/>
         <div>
-          <textarea 
+          <textarea className="content"
             name="content"
             placeholder="Content" 
             value={this.state.content.content}
@@ -158,7 +157,7 @@ class PostAgenda extends React.Component {
 
         <br/>
         <div>
-          <button className="btn btn-primary" onClick={this.saveAgenda}>Save Post</button>
+          <button className="button" onClick={this.saveAgenda}>Save Post</button>
         </div>
       </div>
     );

@@ -1,6 +1,6 @@
 .agenda_row_style{
-    border: 2px solid #D0CAB2;
-    border-radius: 10px;
+    border: 1.5px solid black;
+    border-radius: 20px;
     display:flex;
     width: 300px;
     padding: 10px;
@@ -10,4 +10,15 @@
 .delete_style{
     margin-left: auto; 
     margin-right: 0;
+}
+.delete_button{
+    background-color: white;
+    border: 0px;
+}
+.title{
+    font-size: large;
+    color: black;
+    font-weight: bold;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-size: large;
 }
