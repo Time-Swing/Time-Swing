@@ -3,6 +3,7 @@ import AgendaItem from '../../components/AgendaItem'
 import Loading from '../../components/Loading'
 import { Redirect } from 'react-router-dom'
 import Map from '../../components/Map'
+import "../../css/show_style.css"
 
 //This page is for showing a agendaItem in detail
 class ShowAgenda extends React.Component{
@@ -38,7 +39,7 @@ class ShowAgenda extends React.Component{
         if(this.state.isLoading){return <Loading/>}
         
         return (
-            <div>{this.state.agendaItem}
+            <div className="ShowBox">{this.state.agendaItem}
             {this.state.address && <Map address={this.state.address}/>}
             </div>
             

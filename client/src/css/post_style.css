@@ -1,0 +1,38 @@
+.Post{
+    border: 3px solid black;
+    border-radius: 20px;
+    width: 500px;
+    padding: 30px;
+}
+.input{
+    width:250px;
+    border-radius: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    border: 1.5px solid black;
+}
+.content{
+    width: 250px;
+    border-radius: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    height: 120px;
+    border: 1.5px solid black;
+}
+.button{
+    background-color: white;
+    border-radius: 20px;
+    width: 100px;
+    border: 3px solid black;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-weight: bold;
+    
+}
+.lessMore{
+    float:right;
+    background-color: white;
+    border: 0px;
+}
