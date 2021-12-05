@@ -15,20 +15,20 @@ const QRcodeLogin=()=>{
         console.log(userToken)
         console.log(auth)
         auth.authWithQRcode(userToken)
-            .then((result)=>{
-                console.log("back to front end with user"+result)
-                setRedirect(true)
-            })
-            .catch(err=>{
-                console.log("error happended in the QRcode login proceess"+err)
-            });
-   
+        console.log(auth.isAuthenticated)
+        if(auth.isAuthenticated){
+            console.log("back to front end with user"+auth.isAuthenticated)
+            setRedirect(true)
+        }else{
+            console.log("error happended in the QRcode login proceess"+auth.isAuthenticated)
+        }
+
     return (
         <div>
             this page handle for QR code login request, process your request....
-            {/* {redirect?<Redirect to='/' />:<Redirect to='/login' />} */}
+            {redirect?<Redirect to='/' />:<Redirect to='/login' />}
         </div>
     )
 }
-// QRcodeLogin.contextType = AuthContext;
+// QRcodeLogin.contextType = AuthContext;dd
 export default QRcodeLogin;

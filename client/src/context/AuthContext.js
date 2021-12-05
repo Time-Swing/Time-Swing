@@ -20,6 +20,7 @@ const AuthProvider=({children})=>{
             .then(body=>setUser(body))
             .catch(err=>setUser(false))
     },[])
+    
     const signup = (email,password,phone)=>{
         const url = 'api/auth/signup'
         return fetch(url,{
@@ -83,9 +84,9 @@ const AuthProvider=({children})=>{
             return result.json()
         })
         .then((body)=>{
-            console.log("in the returning body "+body)
+            console.log(body)
             setUser(body)
-            return true
+            return body
         })
         .catch(err=>{console.log(err)});
     }//end of authWithQRcode

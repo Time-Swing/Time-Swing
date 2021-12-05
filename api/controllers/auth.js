@@ -58,7 +58,7 @@ router.post('/QRcodeLogin',(req,res)=>{
 			})
 			.then(user=>{
 				console.log("the user is herer: "+user)//may need to change tempUser to user
-			req.login(user,()=>{res.status(201).json(user)})
+				req.login(user,()=>{res.status(201).json(user)})
 			})
 		}
 	})
