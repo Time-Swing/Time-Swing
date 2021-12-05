@@ -6,6 +6,9 @@ module.exports = (sequelize, DataTypes) => {
   class QRcode extends Model {}
 
   QRcode.init({
+    userId:{
+      type: DataTypes.STRING,
+    },
     createTime: {
       type: DataTypes.STRING,
     },
@@ -22,14 +25,5 @@ module.exports = (sequelize, DataTypes) => {
     //   });
   };
 
-//   QRcode.beforeSave((user, options) => {
-//     if(user.password) {
-//       user.hashedPassword = bcrypt.hashSync(user.password, 10);
-//     }
-//     if(user.userName && user.userPhone){
-//       const toeknFactor = user.userName + user.userPhone;
-//       user.mobileToken = bcrypt.hashSync(toeknFactor,10);
-//     }
-//   });
   return QRcode;
 };

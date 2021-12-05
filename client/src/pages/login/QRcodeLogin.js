@@ -1,25 +1,27 @@
-import React,{useEffect, useState} from 'react';
+import React,{useState,useContext} from 'react';
 import { Redirect } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 
-function QRcodeLogin(props){
+const QRcodeLogin=()=>{
     //1. need to check QRcode token is match with record in the DB, need to this by  authContext function authWithQRcode
     //2. if success, redirect to home page with logined user
     //3. if fail, redirect to login page
     const [redirect,setRedirect] = useState(false)
+    const auth = useContext(AuthContext)
     
-    useEffect(() => {
-        const userToken = props.match.params.token
-        const auth= this.context;
+        const url_str = window.location.href
+        const url = new URL(url_str)
+        const userToken = url.searchParams.get("token")
         console.log(userToken)
+        console.log(auth)
         auth.authWithQRcode(userToken)
-            .then((user)=>{
-                setRedirect(true)
-            })
-            .catch(err=>{
-                console.log("error happended in the QRcode login proceess")
-            });
-    }, [])
+        console.log(auth.isAuthenticated)
+        if(auth.isAuthenticated){
+            console.log("back to front end with user"+auth.isAuthenticated)
+            setRedirect(true)
+        }else{
+            console.log("error happended in the QRcode login proceess"+auth.isAuthenticated)
+        }
 
     return (
         <div>
@@ -28,5 +30,5 @@ function QRcodeLogin(props){
         </div>
     )
 }
-QRcodeLogin.contextType = AuthContext;
+// QRcodeLogin.contextType = AuthContext;dd
 export default QRcodeLogin;
