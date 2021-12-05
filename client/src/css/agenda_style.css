@@ -22,3 +22,9 @@
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
     font-size: large;
 }
+.goback_div{
+    text-align: left;
+}
+.goback_btn{
+    background-color: white;
+}

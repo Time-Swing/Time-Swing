@@ -1,9 +1,10 @@
 import React from 'react'
 import AgendaItem from '../../components/AgendaItem'
 import Loading from '../../components/Loading'
-import { Redirect } from 'react-router-dom'
+import { useHistory, Redirect } from 'react-router-dom'
 import Map from '../../components/Map'
 import "../../css/show_style.css"
+import "../../css/agenda_style.css"
 
 //This page is for showing a agendaItem in detail
 class ShowAgenda extends React.Component{
@@ -34,19 +35,26 @@ class ShowAgenda extends React.Component{
             })
     }
 
+    goBack(event) {
+        window.history.back();
+    }
+
     render(){
         if(this.state.notFound) {return <Redirect to="/" />};
         if(this.state.isLoading){return <Loading/>}
         
         return (
-            <div className="ShowBox">{this.state.agendaItem}
-            {this.state.address && <Map address={this.state.address}/>}
-            </div>
-            
-            
+            <div className="ShowBox">
+                <div className="goback_div">
+                    <button onClick={this.goBack} className="goback_btn">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+                {this.state.agendaItem}
+                {this.state.address && <Map address={this.state.address}/>}
+            </div>   
         )
     }
 }
-
 
 export default ShowAgenda
