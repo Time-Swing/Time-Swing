@@ -20,11 +20,12 @@ import PrivateRoute from './components/PrivateRoute';
 import QRcode from './components/QRcode';
 import QRcodeLogin from './pages/login/QRcodeLogin';
 import Signup from './pages/login/signup';
+import Welcome from './pages/Welcome';
 
 function Navigation(props) {
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
-      <Link className="navbar-brand" to="/">Time Swing</Link>
+      <Link className="navbar-brand" to="/agendas">Time Swing</Link>
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/agenda/new">
@@ -59,12 +60,13 @@ class App extends React.Component {
               <Switch>
                 <PrivateRoute path="/agenda/new" component={PostAgenda} />
                 <PrivateRoute path="/agenda/:id" component={ShowAgenda} />
-                <Route path="/QRcode" component={QRcode} />
+                <PrivateRoute path="/agendas" component={ShowAllAgenda} />
+                <PrivateRoute path="/QRcode" component={QRcode} />
                 <Route path="/QRcodeLogin" component={QRcodeLogin} />
                 <Route path="/about-us" component={AboutUsPage} />
                 <Route path="/login" component={Login} />
                 <Route path="/signup" component={Signup} />
-                <Route path="/" component={ShowAllAgenda} />
+                <Route path="/" component={Welcome} />
               </Switch>
             </div>
           </div>

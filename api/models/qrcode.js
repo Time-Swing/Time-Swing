@@ -6,9 +6,6 @@ module.exports = (sequelize, DataTypes) => {
   class QRcode extends Model {}
 
   QRcode.init({
-    userId:{
-      type: DataTypes.STRING,
-    },
     createTime: {
       type: DataTypes.STRING,
     },
@@ -20,9 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   QRcode.associate = (models) => {
-    // models.Qrcode.belongsTo(models.User, {
-    //     foreignKey: 'mobileToken'
-    //   });
+    models.Qrcode.belongsTo(models.User);
   };
 
   return QRcode;

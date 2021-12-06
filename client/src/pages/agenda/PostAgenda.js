@@ -74,7 +74,7 @@ class PostAgenda extends React.Component {
   }
 
   render() {
-    if(this.state.success) return <Redirect to="/" />;
+    if(this.state.success) return <Redirect to="/agendas" />;
 
     let errorMessage = null;
     if(this.state.error) {

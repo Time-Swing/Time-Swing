@@ -49,23 +49,17 @@ router.post('/QRcodeLogin',(req,res)=>{
 	Qrcode.findOne({
 		where:{mobileToken:inputToken}
 	})
-	.then(foundQRcode=>{
-		console.log(foundQRcode)
-		if(foundQRcode){//success find in the qrcode record
-			console.log("inside the foundQRcode")
-			User.findOne({
-				where:{id:foundQRcode.dataValues.userId}
-			})
+	.then(result=>{
+		console.log(result)
+		result.getUser()
 			.then(user=>{
-				console.log("the user is herer: "+user)//may need to change tempUser to user
+				console.log(user)
 				req.login(user,()=>{res.status(201).json(user)})
 			})
-		}
 	})
 	.catch((err)=>{
 		res.status(400).json({msg:'Failed to match with Token',err})
 	})
-	
 })
 
 //handle request for a QRcode
@@ -81,6 +75,7 @@ router.get('/reqQRCode',(req,res)=>{
 			mobileToken: tempToken,
 		})
 		.then(qrCode =>{
+			req.user.addQrcodes(qrCode)   //assicoate qrcode with request user
 			const urlQR = "http://localhost:3000/QRcodeLogin?token="+qrCode.dataValues.mobileToken
 			console.log(urlQR)
 			QRcode.toDataURL(urlQR,function(err,url){

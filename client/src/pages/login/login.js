@@ -34,7 +34,7 @@ class Login extends React.Component{
     }
 
     render(){
-        const {from} = this.props.location.state || {from:{pathname:'/'}}
+        const {from} = this.props.location.state || {from:{pathname:'/agendas'}}
         const {redirectToReferrer,failed} = this.state;
 
         //if user come from other page 

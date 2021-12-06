@@ -1,7 +1,7 @@
 import React from 'react'
 import AgendaItem from '../../components/AgendaItem'
 import Loading from '../../components/Loading'
-import { useHistory, Redirect } from 'react-router-dom'
+import {Redirect } from 'react-router-dom'
 import Map from '../../components/Map'
 import "../../css/show_style.css"
 import "../../css/agenda_style.css"

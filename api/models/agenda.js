@@ -36,12 +36,9 @@ module.exports = (sequelize,DataTypes)=>{
         modelName:'agenda'
     });
 
-    // Genre.associate = (models) => {
-    //     // associations can be defined here
-    
-    //     // This will add genreId to the Movie model and table
-    //     models.Genre.hasMany(models.Movie)
-    // };
+    Agenda.associate = (models) => {
+        models.Agenda.belongsTo(models.User);
+      };
     
     return Agenda;
 };
