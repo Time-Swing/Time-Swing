@@ -1,15 +1,13 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import { Redirect } from 'react-router-dom';
 import Autocomplete from "react-google-autocomplete";
 import "../../css/post_style.css"
+import { AuthContext } from '../../context/AuthContext';
 
-<<<<<<< HEAD
-
-=======
 const API_KEY = process.env.REACT_APP_API_KEY
-// console.log(API_KEY)
->>>>>>> b2595be81e7114b7650f3a0e0605f0d57146a000
+
 class PostAgenda extends React.Component {
+    static contextType = AuthContext;
     state = {
       error: false,
       success: false,
@@ -20,12 +18,17 @@ class PostAgenda extends React.Component {
           timeStart:'',
           timeEnd:'',
           content:'',
-          address:''
+          address:'',
+          userName:'none'
       }, 
   }
+  
 
   handleChanged = (event) =>{
     const {name, value} = event.target
+
+    let auth = this.context;
+    
     // console.log(name,value)
     // console.log("name: "+name+ "...value:"+value)
     this.setState(preData=>{
@@ -33,7 +36,8 @@ class PostAgenda extends React.Component {
           ...preData,
           content:{
               ...preData.content,
-              [name]:value
+              [name]:value,
+              userName:auth.user.userName
           }
       }
       
@@ -78,6 +82,7 @@ class PostAgenda extends React.Component {
   }
 
   render() {
+
     if(this.state.success) return <Redirect to="/" />;
 
     let errorMessage = null;

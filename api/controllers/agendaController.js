@@ -25,7 +25,7 @@ router.get("/:id", passport.isAuthenticated(),(req, res) => {
 });
 
 router.get("/",(req, res) => {
-	Agenda.findAll({}) //find all agendas
+	Agenda.findAll() //find all agendas
 		.then((agendas) => res.json(agendas)) // then respond with the result to front end written in json
 		.catch((err) => res.Status(404).json(err)); //error handling just in case there is any possible error occurs
 });

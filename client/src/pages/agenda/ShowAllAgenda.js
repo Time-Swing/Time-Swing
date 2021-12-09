@@ -3,15 +3,18 @@ import AgendaItem from '../../components/AgendaItem'
 import Loading from '../../components/Loading'
 import DeleteAgenda from './DeleteAgenda'
 import "../../css/agenda_style.css"
+import { AuthContext } from '../../context/AuthContext';
 
 class AgendaListPage extends React.Component{
+    static contextType = AuthContext;
     state = {
         agendas:[],
         isLoading:true
     }
 
     componentDidMount(){
-        const url = "/api/agenda"
+        let auth = this.context;
+        const url = "/api/agenda/"
         fetch(url)
             .then(res=>res.json())
             .then(agendaData=>{

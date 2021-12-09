@@ -30,7 +30,12 @@ module.exports = (sequelize,DataTypes)=>{
 
         address:{
             type:DataTypes.STRING,
-        }
+        },
+        
+        userName:{
+            type:DataTypes.STRING,
+        },
+
     },{
         sequelize,
         modelName:'agenda'
