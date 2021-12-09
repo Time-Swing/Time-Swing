@@ -13,31 +13,29 @@ class AgendaListPage extends React.Component{
     }
 
     componentDidMount(){
-        let auth = this.context;
-        const url = "/api/agenda/"
+        const url = "/api/agenda"
         fetch(url)
             .then(res=>res.json())
             .then(agendaData=>{
                 this.setState({
                     isLoading:false,
                     agendas:agendaData.map((agendaItem,index)=>{
-                        return <div className="agenda_row_style">
-                        <AgendaItem 
-                            key={index}
-                            id={agendaItem.id}
-                            timeStart={agendaItem.timeStart}
-                            timeEnd = {agendaItem.timeEnd}
-                            title={agendaItem.title}
-                            content={agendaItem.content}
-                            address={agendaItem.address}
-                            createdAt= {agendaItem.createdAt}
-                        />
-                        <div className="delete_style">
-                            <DeleteAgenda key={index} id={agendaItem.id} />
-                        </div>
-                        </div>
-
-                                
+                        return (
+                            <div className="agenda_row_style">
+                                <AgendaItem 
+                                    key={index}
+                                    id={agendaItem.id}
+                                    timeStart={agendaItem.timeStart}
+                                    timeEnd = {agendaItem.timeEnd}
+                                    title={agendaItem.title}
+                                    content={agendaItem.content}
+                                    address={agendaItem.address}
+                                    createdAt= {agendaItem.createdAt}
+                                />
+                                <div className="delete_style">
+                                    <DeleteAgenda key={index} id={agendaItem.id} />
+                                </div>
+                            </div>)         
                     })
                 })
             })

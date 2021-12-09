@@ -11,10 +11,10 @@ const { Agenda } = db; //imports the specific specific Agenda module
 //404 - object not found
 
 // GET /api/agenda/       		//get all agendas
-// GET /api/agendas/:id			//get an agenda
-// PUT /api/agendas/:id      		//update an agenda
-// POST /api/agendas/			//add new agendas
-// DELETE  /api/agendas/:id 	  	//delete an agenda
+// GET /api/agenda/:id			//get an agenda
+// PUT /api/agenda/:id      		//update an agenda
+// POST /api/agenda/			//add new agendas
+// DELETE  /api/agenda/:id 	  	//delete an agenda
 
 router.get("/:id", passport.isAuthenticated(),(req, res) => {
 	//get an agenda
