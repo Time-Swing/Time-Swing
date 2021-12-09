@@ -37,6 +37,9 @@ class Login extends React.Component{
         const {from} = this.props.location.state || {from:{pathname:'/agendas'}}
         const {redirectToReferrer,failed} = this.state;
 
+        const {isAuthenticated} = this.context
+        console.log("from login page : "+ isAuthenticated)
+        if(isAuthenticated){return <Redirect to={from}/>}
         //if user come from other page 
         if(redirectToReferrer){return <Redirect to={from}/>}
 
