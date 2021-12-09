@@ -1,6 +1,6 @@
 import React,{createContext,useEffect,useState} from 'react';
 
-const AuthContext = createContext();
+const AuthContext = createContext(null);
 const {Provider} = AuthContext;
 
 const AuthProvider=({children})=>{
@@ -20,7 +20,20 @@ const AuthProvider=({children})=>{
             .then(body=>setUser(body))
             .catch(err=>setUser(false))
     },[])
-    
+    const quickCheckUSer = ()=>{
+        const url='/api/auth/login'
+        fetch(url)
+            .then(response=>{
+                console.log("quick check user code:" + response.status)
+                if(!response.ok){
+                    throw new Error('Unauthenticated')
+                }
+
+                return response.json()
+            })
+            .then(body=>setUser(body))
+            .catch(err=>setUser(false))
+    }
     const signup = (email,password,phone)=>{
         const url = 'api/auth/signup'
         return fetch(url,{
@@ -113,6 +126,7 @@ const AuthProvider=({children})=>{
    
     return (
         <Provider value={{
+            quickCheckUSer,
             authenticate,
             authWithQRcode,
             signup,
