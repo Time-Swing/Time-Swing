@@ -1,6 +1,6 @@
 import React,{createContext,useEffect,useState} from 'react';
 
-const AuthContext = createContext();
+const AuthContext = createContext(null);
 const {Provider} = AuthContext;
 
 const AuthProvider=({children})=>{
@@ -20,6 +20,20 @@ const AuthProvider=({children})=>{
             .then(body=>setUser(body))
             .catch(err=>setUser(false))
     },[])
+    const quickCheckUSer = ()=>{
+        const url='/api/auth/login'
+        fetch(url)
+            .then(response=>{
+                console.log("quick check user code:" + response.status)
+                if(!response.ok){
+                    throw new Error('Unauthenticated')
+                }
+
+                return response.json()
+            })
+            .then(body=>setUser(body))
+            .catch(err=>setUser(false))
+    }
     const signup = (email,password,phone)=>{
         const url = 'api/auth/signup'
         return fetch(url,{
@@ -65,18 +79,29 @@ const AuthProvider=({children})=>{
     }//end of authenticate
 
     const authWithQRcode = (inputToken)=>{
-        const url="/api/auth/QRcodeLogin?inputToken="+inputToken
-        fetch(url)
-            .then(result=>{
-                if(!result.ok){
-                    throw new Error('Login Failed')
-                }
-                return result.json()
-            })
-            .then((body)=>{
-                setUser(body)
-                return body
-            });
+        console.log("in the authQR :"+inputToken)
+        const url="/api/auth/QRcodeLogin"
+        //use post method here
+        fetch(url,{
+            method:'POST',
+            body:JSON.stringify({inputToken}),
+            headers:{
+                'Content-Type':'application/json',
+            }
+        })
+        .then(result=>{
+            console.log("in the returning reuslt")
+            if(!result.ok){
+                throw new Error('QRLogin Failed')
+            }
+            return result.json()
+        })
+        .then((body)=>{
+            console.log(body)
+            setUser(body)
+            return body
+        })
+        .catch(err=>{console.log(err)});
     }//end of authWithQRcode
     
     const signout =()=>{
@@ -101,6 +126,7 @@ const AuthProvider=({children})=>{
    
     return (
         <Provider value={{
+            quickCheckUSer,
             authenticate,
             authWithQRcode,
             signup,

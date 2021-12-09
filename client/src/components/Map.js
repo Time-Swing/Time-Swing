@@ -19,8 +19,6 @@ class Map extends React.Component{
             const lng = res.results[0].geometry.location.lng
             this.setState({lat:lat,lng:lng})
             })
-        
-
     }
     render(){
         const googleLink="https://maps.googleapis.com/maps/api/js?key="+process.env.REACT_APP_API_KEY+"&v=3.exp&libraries=geometry,drawing,places"
@@ -32,7 +30,7 @@ class Map extends React.Component{
                 <Marker
                 position={this.state}>
                     <InfoWindow>
-                        <div>{this.props.address}</div>
+                        <div>{this.props.address}ABCCCCCC</div>
                     </InfoWindow>
                 </Marker>
             </GoogleMap>

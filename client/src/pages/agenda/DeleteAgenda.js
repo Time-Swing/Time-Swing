@@ -2,9 +2,6 @@ import React from 'react'
 import { Redirect } from 'react-router'
 import "../../css/agenda_style.css"
 
-
-
-
 class DeleteAgenda extends React.Component{
     state={
         success:false,
@@ -45,7 +42,7 @@ class DeleteAgenda extends React.Component{
             </div>
           );
         }
-        if(this.state.success){return <Redirect to={"/agenda/"+this.props.id} />};
+        if(this.state.success){return <Redirect to={{pathname:'/transfer',state:{lastPage:"delete"}}} />};
         return(
             <div>
                 {errorMessage}
@@ -57,5 +54,5 @@ class DeleteAgenda extends React.Component{
         
     }
 }
-
+//<Redirect to={"/agendas/"+this.props.id} />
 export default DeleteAgenda;

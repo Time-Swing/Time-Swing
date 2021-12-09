@@ -20,17 +20,17 @@ import PrivateRoute from './components/PrivateRoute';
 import QRcode from './components/QRcode';
 import QRcodeLogin from './pages/login/QRcodeLogin';
 import Signup from './pages/login/signup';
+import Welcome from './pages/Welcome';
+import Transfer from './pages/Transfer';
 
 function Navigation(props) {
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
-      <Link className="navbar-brand" to="/">Time Swing</Link>
+      <Link className="navbar-brand" to="/agendas">Time Swing</Link>
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/agenda/new">
-
             Create a New Agenda
-
           </NavLink>
         </li>
         <li className="nav-item">
@@ -39,7 +39,7 @@ function Navigation(props) {
           </NavLink>
         </li>
         </ul>
-        <ul class="nav justify-content-end">
+        <ul className="nav justify-content-end">
         <li className="nav-item">
           <AuthButton/>
         </li>
@@ -59,14 +59,16 @@ class App extends React.Component {
           <div className="container-fluid text-center">
             <div className="row justify-content-center">
               <Switch>
-                <PrivateRoute path="/agenda/new" component={PostAgenda} />
-                <PrivateRoute path="/agenda/:id" component={ShowAgenda} />
-                <Route path="/QRcode" component={QRcode} />
-                <Route path="/QRcodeLogin" component={QRcodeLogin} />
-                <Route path="/about-us" component={AboutUsPage} />
-                <Route path="/login" component={Login} />
-                <Route path="/signup" component={Signup} />
-                <Route path="/" component={ShowAllAgenda} />
+                <PrivateRoute  path="/agenda/new" component={PostAgenda} />
+                <PrivateRoute  path="/agenda/:id" component={ShowAgenda} />
+                <PrivateRoute  excat path="/agendas" component={ShowAllAgenda} />
+                <Route  path="/transfer" component={Transfer} />
+                <PrivateRoute  path="/QRcode" component={QRcode} />
+                <Route  path="/QRcodeLogin" component={QRcodeLogin} />
+                <Route  path="/about-us" component={AboutUsPage} />
+                <Route  path="/login" component={Login} />
+                <Route  path="/signup" component={Signup} />
+                <Route excat path="/" component={Welcome} />
               </Switch>
             </div>
           </div>

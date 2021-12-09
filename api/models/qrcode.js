@@ -17,19 +17,8 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   QRcode.associate = (models) => {
-    // models.Qrcode.belongsTo(models.User, {
-    //     foreignKey: 'mobileToken'
-    //   });
+    models.Qrcode.belongsTo(models.User);
   };
 
-//   QRcode.beforeSave((user, options) => {
-//     if(user.password) {
-//       user.hashedPassword = bcrypt.hashSync(user.password, 10);
-//     }
-//     if(user.userName && user.userPhone){
-//       const toeknFactor = user.userName + user.userPhone;
-//       user.mobileToken = bcrypt.hashSync(toeknFactor,10);
-//     }
-//   });
   return QRcode;
 };

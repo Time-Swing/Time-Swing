@@ -25,9 +25,15 @@ router.get("/:id", passport.isAuthenticated(),(req, res) => {
 });
 
 router.get("/",(req, res) => {
-	Agenda.findAll() //find all agendas
-		.then((agendas) => res.json(agendas)) // then respond with the result to front end written in json
-		.catch((err) => res.Status(404).json(err)); //error handling just in case there is any possible error occurs
+	// Agenda.findAll({}) //find all agendas
+	// 	.then((agendas) => res.json(agendas)) // then respond with the result to front end written in json
+	// 	.catch((err) => res.Status(404).json(err)); //error handling just in case there is any possible error occurs
+	
+	req.user.getAgendas()
+		.then((agendas)=>{
+			res.json(agendas)
+		})
+		.catch((err) => res.Status(404).json(err));
 });
 
 router.put("/:id", passport.isAuthenticated(),(req, res) => {
@@ -68,6 +74,7 @@ router.post("/",(req, res) => {
 	const newAgenda = req.body; // get front-end object from user
 	Agenda.create(newAgenda) //create new instance and save into the DB
 		.then((result) => {
+			req.user.addAgendas(result); //add the relateion between agenda and user
 			res.status(201).json(result); // then respond with the result to front end
 		})
 		.catch((err) => {
