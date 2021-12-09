@@ -14,7 +14,7 @@ class AgendaListPage extends React.Component{
 
     componentDidMount(){
         // let auth = this.context;
-        const url = "/api/agendas/"
+        const url = "/api/agendas"
         fetch(url)
             .then(res=>res.json())
             .then(agendaData=>{

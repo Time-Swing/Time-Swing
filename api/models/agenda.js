@@ -16,7 +16,6 @@ module.exports = (sequelize,DataTypes)=>{
         timeEnd:{
             type:DataTypes.STRING,
         },
-
         title:{
             type:DataTypes.STRING,
             validate:{
@@ -27,15 +26,9 @@ module.exports = (sequelize,DataTypes)=>{
         content:{
             type:DataTypes.STRING,
         },
-
         address:{
             type:DataTypes.STRING,
         },
-        
-        userName:{
-            type:DataTypes.STRING,
-        },
-
     },{
         sequelize,
         modelName:'agenda'
