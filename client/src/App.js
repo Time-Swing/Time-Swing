@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 
 
+
 import PostAgenda from './pages/agenda/PostAgenda';
 import AboutUsPage from './pages/AboutUsPage';
 import ShowAllAgenda from './pages/agenda/ShowAllAgenda'
@@ -22,22 +23,25 @@ import QRcodeLogin from './pages/login/QRcodeLogin';
 import Signup from './pages/login/signup';
 import Welcome from './pages/Welcome';
 import Transfer from './pages/Transfer';
+import "../src/css/nav_style.css";
+import Logo from "../src/images/logo.png"
+
 
 function Navigation(props) {
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
-      <Link className="navbar-brand" to="/agendas">Time Swing</Link>
-      <ul className="navbar-nav mr-auto">
+    <nav className="navbar navbar-expand-sm navbar-light bg-light shadow mb-3">
+      <Link className="navbar-brand" to="/agendas"><img className="logo" src={Logo} alt="logo"/></Link>
+      <ul className="navbar-nav mr-auto barFont">
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/agenda/new">
-            Create a New Agenda
+          <i class="far fa-lg fa-calendar-plus"></i> Create a New Agenda
           </NavLink>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <NavLink className="nav-link" exact to="/about-us">
             About
           </NavLink>
-        </li>
+        </li> */}
         </ul>
         <ul className="nav justify-content-end">
         <li className="nav-item">

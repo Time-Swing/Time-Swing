@@ -50,7 +50,7 @@ class Signup extends React.Component{
             <div className="login_form">
                 <form onSubmit={this.signup}>
                     {err}
-                    <img className="mb-4" src={LogoWhite} alt="" width="250" height="250"/>
+                    <img className="mb-4" src={LogoWhite} alt="" width="100" height="100"/>
                     <h1 className="h3 mb-3 fw-normal">create you own account today</h1>
 
                     <div className="form-floating">
@@ -67,7 +67,7 @@ class Signup extends React.Component{
                     </div>
                     <br/>
 
-                    <button className="w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
+                    <button className="w-100 btn btn-lg btn-secondary" type="submit">Sign Up</button>
                     <p><Link to='/login'>already have a account? login here</Link></p>
                     <p className="mt-5 mb-3 text-muted">© 2017–2021</p>
                 </form>

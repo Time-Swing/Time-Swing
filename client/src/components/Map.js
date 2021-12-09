@@ -30,7 +30,7 @@ class Map extends React.Component{
                 <Marker
                 position={this.state}>
                     <InfoWindow>
-                        <div>{this.props.address}ABCCCCCC</div>
+                        <div>{this.props.address}</div>
                     </InfoWindow>
                 </Marker>
             </GoogleMap>

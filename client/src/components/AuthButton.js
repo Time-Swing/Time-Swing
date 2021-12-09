@@ -2,8 +2,9 @@ import React,{useContext} from 'react'
 import {withRouter,Link} from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
 import "../css/nav_style.css"
+import { Dropdown } from 'react-bootstrap';
 
-const classes = "btn btn-primary"
+const classes = "btn btn-secondary"
 
 const AuthButton = withRouter(({history})=>{
     const auth = useContext(AuthContext)
@@ -17,8 +18,18 @@ const AuthButton = withRouter(({history})=>{
 
     return (
         <div>
-            <Link to='/QRcode'>Welcome! {auth.user.userName.match(/(\S*)@/)[1]}</Link>
-            <button className={classes} onClick={logout}>Logout</button>
+            <Link to='/QRcode'></Link>
+            {/* <button className={classes} onClick={logout}>Logout</button> */}
+            <Dropdown>
+                <Dropdown.Toggle className="user" variant="secondary">
+                <i class="far fa-2x fa-user-circle"></i>
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                    <Dropdown.Item><Link className="link" to='/QRcode'>QR Code</Link></Dropdown.Item>
+                    <Dropdown.Item onClick={logout}>Log Out</Dropdown.Item>
+                </Dropdown.Menu>
+            </Dropdown>
         </div>
     )
 })
