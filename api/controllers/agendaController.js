@@ -33,7 +33,7 @@ router.get("/",(req, res) => {
 		.then((agendas)=>{
 			res.json(agendas)
 		})
-		.catch((err) => res.Status(404).json(err));
+		.catch((err) => res.status(404).json(err));
 });
 
 router.put("/:id", passport.isAuthenticated(),(req, res) => {
