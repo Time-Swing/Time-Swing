@@ -19,16 +19,12 @@ class PostAgenda extends React.Component {
           timeEnd:'',
           content:'',
           address:'',
-          userName:'none'
       }, 
   }
   
 
   handleChanged = (event) =>{
-    const {name, value} = event.target
-
-    let auth = this.context;
-    
+    const {name, value} = event.target  
     // console.log(name,value)
     // console.log("name: "+name+ "...value:"+value)
     this.setState(preData=>{
@@ -37,7 +33,6 @@ class PostAgenda extends React.Component {
           content:{
               ...preData.content,
               [name]:value,
-              userName:auth.user.userName
           }
       }
       
