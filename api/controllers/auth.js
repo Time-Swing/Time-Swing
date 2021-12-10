@@ -76,7 +76,7 @@ router.get('/reqQRCode',(req,res)=>{
 		})
 		.then(qrCode =>{
 			req.user.addQrcodes(qrCode)   //assicoate qrcode with request user
-			const urlQR = "http://localhost:3000/QRcodeLogin?token="+qrCode.dataValues.mobileToken
+			const urlQR = process.env.BASE_URL+"/QRcodeLogin?token="+qrCode.dataValues.mobileToken
 			console.log(urlQR)
 			QRcode.toDataURL(urlQR,function(err,url){
 				// console.log(url)

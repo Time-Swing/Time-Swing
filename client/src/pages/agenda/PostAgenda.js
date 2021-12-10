@@ -1,4 +1,4 @@
-import React,{useContext} from 'react';
+import React from 'react';
 import { Redirect } from 'react-router-dom';
 import Autocomplete from "react-google-autocomplete";
 import "../../css/post_style.css"
