@@ -4,6 +4,7 @@ import Loading from '../../components/Loading'
 import DeleteAgenda from './DeleteAgenda'
 import "../../css/agenda_style.css"
 import { AuthContext } from '../../context/AuthContext';
+import WeatherIcon from '../../components/Weather';
 
 class AgendaListPage extends React.Component{
     static contextType = AuthContext;
@@ -32,6 +33,7 @@ class AgendaListPage extends React.Component{
                                     address={agendaItem.address}
                                     createdAt= {agendaItem.createdAt}
                                 />
+                                <WeatherIcon address={agendaItem.address}/>
                                 <div className="delete_style">
                                     <DeleteAgenda key={index} id={agendaItem.id} />
                                 </div>

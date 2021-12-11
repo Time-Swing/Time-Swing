@@ -34,7 +34,7 @@ function Navigation(props) {
       <ul className="navbar-nav mr-auto barFont">
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/agenda/new">
-          <i class="far fa-lg fa-calendar-plus"></i> Create a New Agenda
+          <i className="far fa-lg fa-calendar-plus"></i> Create a New Agenda
           </NavLink>
         </li>
         {/* <li className="nav-item">

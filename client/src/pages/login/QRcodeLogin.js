@@ -26,7 +26,7 @@ const QRcodeLogin=()=>{
     return (
         <div>
             this page handle for QR code login request, process your request....
-            {redirect?<Redirect to='/' />:<Redirect to='/login' />}
+            {redirect?<Redirect to='/agendas' />:<Redirect to='/login' />}
         </div>
     )
 }
