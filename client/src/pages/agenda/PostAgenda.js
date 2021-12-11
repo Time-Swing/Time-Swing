@@ -5,7 +5,7 @@ import "../../css/post_style.css"
 import { AuthContext } from '../../context/AuthContext';
 
 const API_KEY = process.env.REACT_APP_API_KEY
-
+console.log(process.env.REACT_APP_API_KEY)
 class PostAgenda extends React.Component {
     static contextType = AuthContext;
     state = {
