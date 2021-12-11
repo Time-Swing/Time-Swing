@@ -6,9 +6,9 @@ const WeatherIcon = (props)=>{
     let [tempture,setTemp] = useState()
     let [success,setSuccess] = useState(false)
     const zipCode= props.address? props.address.substring(props.address.length - 10,props.address.length - 5):null
-    // console.log(zipCode)
+    console.log(zipCode)
     if(zipCode){
-        const url = "http://api.openweathermap.org/data/2.5/weather?zip="+zipCode+",us&appid="+process.env.REACT_APP_WEATHER_API_KEY
+        const url = "https://api.openweathermap.org/data/2.5/weather?zip="+zipCode+",us&appid="+process.env.REACT_APP_WEATHER_API_KEY
         // console.log(url)
         fetch(url)
             .then(result=>result.json())
