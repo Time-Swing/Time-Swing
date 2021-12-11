@@ -1,6 +1,7 @@
-import React, { useContext, useState } from 'react'
+import React, {useState } from 'react'
 
 const WeatherIcon = (props)=>{
+    console.log(process.env.REACT_APP_WEATHER_API_KEY)
     let [icon,setIcon] = useState()
     let [tempture,setTemp] = useState()
     let [success,setSuccess] = useState(false)
