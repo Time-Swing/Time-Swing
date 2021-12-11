@@ -31,7 +31,7 @@ function AgendaItem(props){
         renderContent = 
         <div>
             <Link to={"/agenda/"+props.id}>
-            <p>{shortTitle}</p>
+            {shortTitle}
             </Link>         
             </div>
     }

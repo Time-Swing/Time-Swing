@@ -1,4 +1,5 @@
 import React, {useState } from 'react'
+import "../css/agenda_style.css"
 
 const WeatherIcon = (props)=>{
     console.log(process.env.REACT_APP_WEATHER_API_KEY)
@@ -22,8 +23,8 @@ const WeatherIcon = (props)=>{
     
     return (
         success?
-            <img src={icon} alt="weather icon"/>:
-            <p><i class="fas fa-home"></i></p>
+            <img src={icon} alt="weather icon" className="img_style"/>:
+            <i class="fas fa-home"></i>
     )
 }
 export default WeatherIcon

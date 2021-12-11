@@ -23,17 +23,19 @@ class AgendaListPage extends React.Component{
                     agendas:agendaData.map((agendaItem,index)=>{
                         return (
                             <div className="agenda_row_style">
-                                <AgendaItem 
-                                    key={index}
-                                    id={agendaItem.id}
-                                    timeStart={agendaItem.timeStart}
-                                    timeEnd = {agendaItem.timeEnd}
-                                    title={agendaItem.title}
-                                    content={agendaItem.content}
-                                    address={agendaItem.address}
-                                    createdAt= {agendaItem.createdAt}
-                                />
-                                <WeatherIcon address={agendaItem.address}/>
+                                
+                                    <AgendaItem 
+                                        key={index}
+                                        id={agendaItem.id}
+                                        timeStart={agendaItem.timeStart}
+                                        timeEnd = {agendaItem.timeEnd}
+                                        title={agendaItem.title}
+                                        content={agendaItem.content}
+                                        address={agendaItem.address}
+                                        createdAt= {agendaItem.createdAt}
+                                    />
+                                    <WeatherIcon address={agendaItem.address}/>
+                                
                                 <div className="delete_style">
                                     <DeleteAgenda key={index} id={agendaItem.id} />
                                 </div>
