@@ -1,0 +1,25 @@
+.section-features{
+    width: 60%;
+    margin: 0 auto;
+    padding: 8% 0;
+  }
+  .long-copy{
+    line-height: 145%;
+    width: 70%;
+    margin-left: 15%;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .box{
+    padding: 1%;
+  }
+  .box p{
+    font-size: 90%;
+    line-height: 145%;
+  }
+  .icon-b{
+    font-size: 350%;
+    display: block;
+    color:#e67e22;
+    margin-bottom: 10px;
+  }

@@ -4,7 +4,8 @@ import {
     withGoogleMap,
     GoogleMap,
     Marker,
-    InfoWindow} from "react-google-maps";
+    InfoWindow,
+    TrafficLayer} from "react-google-maps";
 import Geocode from 'react-geocode';
 
 class Map extends React.Component{
@@ -21,11 +22,13 @@ class Map extends React.Component{
             })
     }
     render(){
+
         const googleLink="https://maps.googleapis.com/maps/api/js?key="+process.env.REACT_APP_API_KEY+"&v=3.exp&libraries=geometry,drawing,places"
         const MapWithAMarker = withScriptjs(withGoogleMap(props =>
             <GoogleMap
-                defaultZoom={15}
+                defaultZoom={12}
                 defaultCenter={this.state}
+                defaultOptions={{mapTypeControl: false,streetViewControl: false}}
             >
                 <Marker
                 position={this.state}>
@@ -33,6 +36,7 @@ class Map extends React.Component{
                         <div>{this.props.address}</div>
                     </InfoWindow>
                 </Marker>
+                <TrafficLayer autoUpdate />
             </GoogleMap>
             ));
         return(
@@ -42,6 +46,7 @@ class Map extends React.Component{
                 loadingElement={<div style={{ height: `100%` }} />}
                 containerElement={<div style={{ height: `200px` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
+                
                 />
             </div>
         )                 

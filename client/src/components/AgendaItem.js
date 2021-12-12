@@ -30,7 +30,7 @@ function AgendaItem(props){
     }else{
         renderContent = 
         <div>
-            <Link to={"/agenda/"+props.id}>
+            <Link className="link_color" to={"/agenda/"+props.id}>
             {shortTitle}
             </Link>         
             </div>
