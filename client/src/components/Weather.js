@@ -1,4 +1,5 @@
 import React, {useState } from 'react'
+import "../css/agenda_style.css"
 
 const WeatherIcon = (props)=>{
     console.log(process.env.REACT_APP_WEATHER_API_KEY)
@@ -6,9 +7,9 @@ const WeatherIcon = (props)=>{
     let [tempture,setTemp] = useState()
     let [success,setSuccess] = useState(false)
     const zipCode= props.address? props.address.substring(props.address.length - 10,props.address.length - 5):null
-    // console.log(zipCode)
+    console.log(zipCode)
     if(zipCode){
-        const url = "http://api.openweathermap.org/data/2.5/weather?zip="+zipCode+",us&appid="+process.env.REACT_APP_WEATHER_API_KEY
+        const url = "https://api.openweathermap.org/data/2.5/weather?zip="+zipCode+",us&appid="+process.env.REACT_APP_WEATHER_API_KEY
         // console.log(url)
         fetch(url)
             .then(result=>result.json())
@@ -22,8 +23,8 @@ const WeatherIcon = (props)=>{
     
     return (
         success?
-            <img src={icon} alt="weather icon"/>:
-            <p><i class="fas fa-home"></i></p>
+            <img src={icon} alt="weather icon" className="img_style"/>:
+            <i class="fas fa-home"></i>
     )
 }
 export default WeatherIcon
