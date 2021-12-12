@@ -8,8 +8,8 @@ function Welcome() {
   return (
     <div className="container px-4 py-5 section-features" id="hanging-icons">
     <div className="pb-2 border-bottom">
-      <img className="logo_style"src={Logo} alt="logo"/>
-      <p>Time Swing helps you GJKGHSDKGSLDHLASDHLASHDKHDKASHD</p>
+      <img className="logo_style mb-3"src={Logo} alt="logo"/>
+      <h3>Time Swing helps you keep on track every day!</h3>
     </div>
     <div className="row g-4 py-5 row-cols-1 row-cols-lg-3 pb-2 border-bottom">
       <div className="col d-flex align-items-start">
@@ -26,8 +26,8 @@ function Welcome() {
           <i class="fas fa-qrcode fa-4x"></i>
         </div>
         <div>
-          <h2>Cross Plarfroms</h2>
-          <p>Just scan a QR code, then switch to another devices.</p>
+          <h2>Cross Platforms</h2>
+          <p>Just scan a QR code, then switch to another device.</p>
         </div>
       </div>
       <div className="col d-flex align-items-start">
@@ -36,7 +36,7 @@ function Welcome() {
         </div>
         <div>
           <h2>Ready to Go</h2>
-          <p>Time Swing provide the weather and traffic information for your next move.</p>
+          <p>Time Swing provides real-time weather and traffic information for your next move.</p>
         </div>
       </div>
     </div>
