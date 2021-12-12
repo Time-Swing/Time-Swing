@@ -1,45 +1,53 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import Logo from "../images/Time_Swing_for_white.png";
 import "../css/welcome_style.css";
+import "../css/animated_button.css";
 
 function Welcome() {
   return (
-    <section class="section-features">
-    <div class="row">
-      <h2>Get food fast — not fast food</h2>
-      <p class="long-copy">
-        Hello, we are Omnifood, your new premium food delivery service. We know you are always busy. No time for cooking. So let us take care of that, we’re really good at it, we promise!
-      </p>
+    <div className="container px-4 py-5 section-features" id="hanging-icons">
+    <div className="pb-2 border-bottom">
+      <img className="logo_style"src={Logo} alt="logo"/>
+      <p>Time Swing helps you GJKGHSDKGSLDHLASDHLASHDKHDKASHD</p>
     </div>
-    <div class="row js--wp-1 animated fadeIn">
-      <div class="col span-1-of-4 box">
-        <h3>
-          <ion-icon name="infinite-outline" class="icon-b md hydrated" role="img" aria-label="infinite outline"></ion-icon> Up to 365 days/year
-        </h3>
-        <p>
-          Never cook again! We really mean that. Our subscription plans include up to 365 days/year coverage. You can also choose to order more flexibly if that's your style.
-        </p>
+    <div className="row g-4 py-5 row-cols-1 row-cols-lg-3 pb-2 border-bottom">
+      <div className="col d-flex align-items-start">
+        <div className="icon-square text-dark flex-shrink-0 me-3">
+          <i className="fas fa-bolt fa-4x"></i>
+        </div>
+        <div>
+          <h2>Easy Input</h2>
+          <p>Input an agenda as quick as 5 seconds!</p>
+        </div>
       </div>
-      <div class="col span-1-of-4 box">
-        <h3>
-          <ion-icon name="hourglass-outline" class="icon-b md hydrated" role="img" aria-label="hourglass outline"></ion-icon> Ready in 20 minutes
-        </h3>
-        <p>
-          You're only twenty minutes away from your delicious and super healthy meals delivered right to your home. We work with the best chefs in each town to ensure that you're 100% happy.
-        </p>
+      <div className="col d-flex align-items-start">
+        <div className="icon-square text-dark flex-shrink-0 me-3">
+          <i class="fas fa-qrcode fa-4x"></i>
+        </div>
+        <div>
+          <h2>Cross Plarfroms</h2>
+          <p>Just scan a QR code, then switch to another devices.</p>
+        </div>
       </div>
-      <div class="col span-1-of-4 box">
-        <h3>
-          <ion-icon name="cafe-outline" class="icon-b md hydrated" role="img" aria-label="cafe outline"></ion-icon> 100% organic
-        </h3>
-        <p>
-          All our vegetables are fresh, organic and local. Animals are raised without added hormones or antibiotics. Good for your health, the environment, and it also tastes better!
-        </p>
+      <div className="col d-flex align-items-start">
+        <div className="icon-square text-dark flex-shrink-0 me-3">
+        <i class="fas fa-map-marked-alt fa-4x"></i>
+        </div>
+        <div>
+          <h2>Ready to Go</h2>
+          <p>Time Swing provide the weather and traffic information for your next move.</p>
+        </div>
       </div>
-      
     </div>
-  </section>
+    <div className="mt-5 row row-cols-1 row-cols-lg-3" >
+      <Link to="/login" className="Abtn">
+        Try it Today
+      </Link>
+    </div>
+  </div>
   );
 }
 
 export default Welcome;
+

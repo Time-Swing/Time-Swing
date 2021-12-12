@@ -1,0 +1,25 @@
+.Abtn{
+  outline:none;
+  border:none;
+  cursor:pointer;
+  display:block;
+  position:relative;
+  background-color:#fcad26;
+  font-size:16px;
+  font-weight:200px;
+  color:white;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  padding: 25px 80px;
+  margin:0 auto;
+  border-radius:20px;
+  box-shadow:0 6px #efa424;
+}
+.Abtn:hover{
+  box-shadow:0 4px #efa424;
+  top:2px;
+}
+.Abtn:active{
+  box-shadow:none;
+  top:6px;
+}
